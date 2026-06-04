@@ -1,42 +1,60 @@
 # Lamp Store Bot
 
-Базовый Python-сервис для кнопки-робота на сайте интернет-магазина.
+Python backend for the lamp store chatbot.
 
-Сейчас внутри нет искусственного интеллекта и нет подключения к внешнему API. Вместо этого уже есть правильная база:
+The project is prepared for a future Grok API key, but it can run without AI. In the safe default mode it uses demo products and returns catalog-based fallback replies.
 
-- HTTP API для чата
-- сессии и история сообщений
-- rule-based ответы без ИИ
-- репозиторий товаров
-- готовая точка расширения под будущую БД и Grok
+## Architecture
 
-## Структура
+```text
+site chat widget
+  -> FastAPI backend
+  -> product repository
+  -> Microsoft SQL Server or demo products
+  -> AI provider
+  -> Grok API or fallback provider
+  -> response back to the site
+```
 
-- `app/main.py` - запуск FastAPI
-- `app/api/routes/chat.py` - API чата
-- `app/api/routes/products.py` - API товаров
-- `app/services/chat_service.py` - логика сессий и ответов
-- `app/repositories/product_repository.py` - работа с товарами
-- `database/schema.sql` - схема будущей SQLite БД
+## Main Parts
 
-## Что уже умеет бот
+- `app/main.py` - FastAPI application.
+- `app/api/routes/chat.py` - chat API endpoints.
+- `app/api/routes/products.py` - product API endpoints.
+- `app/services/chat_service.py` - main chat flow.
+- `app/services/ai_provider.py` - Grok integration point and no-AI fallback.
+- `app/repositories/product_repository.py` - product lookup from memory or Microsoft SQL Server.
+- `database/schema.sql` - Microsoft SQL Server schema for products and future chat history.
 
-- создавать чат-сессию
-- принимать сообщение от пользователя
-- сохранять историю диалога
-- искать товар по названию и ключевым словам
-- отвечать по цене, наличию, доставке, возврату
-- делать простую подборку товаров без ИИ
+## Environment
 
-## Что потом можно подключить без ломки архитектуры
+Copy `.env.example` to `.env` and fill only what you need.
 
-- Grok API или другой AI-провайдер
-- реальную БД товаров
-- базу пользователей
-- оформление заказа
-- FAQ, логистику и CRM
+Default safe mode:
 
-## Быстрый запуск
+```env
+PRODUCT_DB_MODE=memory
+AI_PROVIDER=none
+```
+
+Microsoft SQL Server mode:
+
+```env
+PRODUCT_DB_MODE=mssql
+SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
+```
+
+Future Grok mode:
+
+```env
+AI_PROVIDER=grok
+GROK_API_KEY=your_xai_api_key_here
+GROK_MODEL=grok-4-1-fast
+```
+
+Do not write the Grok API key directly in source code.
+
+## Run
 
 ```powershell
 cd D:\Диплом\Bot
@@ -46,11 +64,13 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Документация FastAPI после запуска:
+API documentation after startup:
 
-- `http://127.0.0.1:8000/docs`
+```text
+http://127.0.0.1:8000/docs
+```
 
-## Основные маршруты
+## API
 
 - `GET /health`
 - `GET /api/v1/products`
@@ -59,58 +79,23 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 - `GET /api/v1/chat/sessions/{session_id}`
 - `POST /api/v1/chat/messages`
 
-## Пример запроса на отправку сообщения
+Example chat request:
 
 ```json
 {
   "session_id": null,
   "language": "ru",
-  "text": "Подбери лампу для спальни",
+  "text": "Посоветуй лампу для спальни до 50 PLN",
   "metadata": {
     "source": "site-widget"
   }
 }
 ```
 
-## Как подключить к сайту позже
+## How Grok Will Be Connected
 
-На стороне фронтенда кнопка робота должна:
+The site sends a message to `POST /api/v1/chat/messages`.
 
-1. Открывать окно чата.
-2. Отправлять `fetch` на `POST /api/v1/chat/messages`.
-3. Сохранять `session.id` в `localStorage` или `sessionStorage`.
-4. Добавлять в окно чата и сообщение пользователя, и ответ бота.
+The backend searches matching products in the database and sends only those products to Grok. Grok receives the user's question and real product data, then returns a consultant-style answer.
 
-Минимальный пример:
-
-```js
-const response = await fetch("http://127.0.0.1:8000/api/v1/chat/messages", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    session_id: sessionId,
-    language: "ru",
-    text: userText,
-    metadata: { source: "site-widget" }
-  })
-});
-
-const data = await response.json();
-sessionId = data.session.id;
-```
-
-## Подключение к будущей БД товаров
-
-Сейчас по умолчанию используется память и тестовые товары.
-
-Когда появится SQLite база:
-
-1. Создай файл БД по схеме из `database/schema.sql`.
-2. Укажи в `.env`:
-
-```env
-PRODUCT_DB_MODE=sqlite
-SQLITE_DB_PATH=database/products.db
-```
-
-Если база недоступна или пуста, сервис автоматически вернется к встроенным товарам, поэтому запуск не упадет.
+This is cheaper and safer than sending the whole catalog to AI on every message.

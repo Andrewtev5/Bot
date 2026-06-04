@@ -5,7 +5,8 @@ from functools import lru_cache
 from app.core.config import Settings, load_settings
 from app.repositories.product_repository import build_product_repository
 from app.repositories.session_repository import InMemorySessionRepository
-from app.services.chat_service import ChatService, RuleBasedAssistantEngine
+from app.services.ai_provider import build_ai_provider
+from app.services.chat_service import ChatService
 
 
 @lru_cache
@@ -24,10 +25,16 @@ def get_session_repository():
 
 
 @lru_cache
+def get_ai_provider():
+    return build_ai_provider(get_settings())
+
+
+@lru_cache
 def get_chat_service() -> ChatService:
-    assistant_engine = RuleBasedAssistantEngine(get_product_repository())
     return ChatService(
         session_repository=get_session_repository(),
-        assistant_engine=assistant_engine,
+        product_repository=get_product_repository(),
+        ai_provider=get_ai_provider(),
         default_language=get_settings().default_language,
+        max_products_for_ai=get_settings().max_products_for_ai,
     )
