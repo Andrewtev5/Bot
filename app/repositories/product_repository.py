@@ -46,28 +46,14 @@ class InMemoryProductRepository:
 class SqlServerProductRepository:
     def __init__(self, connection_string: str) -> None:
         self._connection_string = connection_string
+        self._columns: set[str] | None = None
 
     def list_products(self) -> list[Product]:
-        rows = self._fetch_all(
-            """
-            SELECT TOP (100)
-                id, name, price, currency, category, description, stock_status, image_url
-            FROM products
-            ORDER BY name
-            """
-        )
+        rows = self._fetch_all(f"SELECT TOP (100) {self._select_clause()} FROM products ORDER BY name")
         return [map_sql_server_product(row) for row in rows]
 
     def get_product(self, product_id: str) -> Product | None:
-        rows = self._fetch_all(
-            """
-            SELECT TOP (1)
-                id, name, price, currency, category, description, stock_status, image_url
-            FROM products
-            WHERE id = ?
-            """,
-            (product_id,),
-        )
+        rows = self._fetch_all(f"SELECT TOP (1) {self._select_clause()} FROM products WHERE id = ?", (product_id,))
         return map_sql_server_product(rows[0]) if rows else None
 
     def search_products(self, query: str, limit: int = 5) -> list[Product]:
@@ -76,20 +62,70 @@ class SqlServerProductRepository:
             return self.list_products()[:limit]
 
         like = f"%{normalized}%"
+        search_columns = self._search_columns()
         rows = self._fetch_all(
             f"""
-            SELECT TOP ({int(limit)})
-                id, name, price, currency, category, description, stock_status, image_url
+            SELECT TOP ({int(limit)}) {self._select_clause()}
             FROM products
-            WHERE LOWER(id) LIKE ?
-               OR LOWER(name) LIKE ?
-               OR LOWER(description) LIKE ?
-               OR LOWER(category) LIKE ?
+            WHERE {" OR ".join(f"LOWER(COALESCE(CAST({column} AS NVARCHAR(MAX)), '')) LIKE ?" for column in search_columns)}
             ORDER BY name
             """,
-            (like, like, like, like),
+            tuple(like for _ in search_columns),
         )
         return [map_sql_server_product(row) for row in rows]
+
+    def _select_clause(self) -> str:
+        columns = self._get_columns()
+        if {"name_pl", "name_en", "tag_pl", "tag_en", "description_pl", "description_en", "image"}.issubset(columns):
+            return """
+                id,
+                COALESCE(NULLIF(name_pl, ''), NULLIF(name_en, ''), id) AS name,
+                price,
+                COALESCE(NULLIF(currency, ''), 'PLN') AS currency,
+                COALESCE(NULLIF(tag_pl, ''), NULLIF(tag_en, ''), 'lampa') AS category,
+                COALESCE(NULLIF(description_pl, ''), NULLIF(description_en, ''), '') AS description,
+                CAST('in_stock' AS NVARCHAR(50)) AS stock_status,
+                image AS image_url
+            """
+
+        return """
+            id,
+            name,
+            price,
+            COALESCE(NULLIF(currency, ''), 'PLN') AS currency,
+            COALESCE(NULLIF(category, ''), 'lampa') AS category,
+            COALESCE(description, '') AS description,
+            COALESCE(NULLIF(stock_status, ''), 'unknown') AS stock_status,
+            image_url
+        """
+
+    def _search_columns(self) -> list[str]:
+        columns = self._get_columns()
+        if {"name_pl", "name_en", "tag_pl", "tag_en", "description_pl", "description_en"}.issubset(columns):
+            return [
+                "id",
+                "name_pl",
+                "name_en",
+                "description_pl",
+                "description_en",
+                "tag_pl",
+                "tag_en",
+            ]
+
+        return ["id", "name", "description", "category"]
+
+    def _get_columns(self) -> set[str]:
+        if self._columns is None:
+            rows = self._fetch_all(
+                """
+                SELECT LOWER(COLUMN_NAME) AS column_name
+                FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE TABLE_SCHEMA = 'dbo'
+                  AND TABLE_NAME = 'products'
+                """
+            )
+            self._columns = {str(row.column_name).lower() for row in rows}
+        return self._columns
 
     def _fetch_all(self, query: str, params: tuple[Any, ...] = ()) -> list[Any]:
         try:
