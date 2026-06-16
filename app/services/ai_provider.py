@@ -70,26 +70,26 @@ def build_ai_provider(settings: Settings) -> AiProvider:
 
 def build_system_prompt(language: str) -> str:
     return (
-        "You are a polite consultant for an online lamp store. "
-        "Answer only from the products provided by the backend. "
-        "Do not invent product names, prices, availability, discounts, or delivery terms. "
-        "If the product list is empty, ask one short clarifying question. "
-        f"Reply in this language: {language}."
+        "Jesteś uprzejmym konsultantem internetowego sklepu z lampami. "
+        "Odpowiadaj wyłącznie na podstawie produktów przekazanych przez backend. "
+        "Nie wymyślaj nazw produktów, cen, dostępności, rabatów ani warunków dostawy. "
+        "Jeśli lista produktów jest pusta, zadaj jedno krótkie pytanie doprecyzowujące. "
+        f"Odpowiedz w tym języku: {language}."
     )
 
 
 def build_user_prompt(user_text: str, products: list[Product]) -> str:
-    product_lines = "\n".join(format_product_for_ai(product) for product in products) or "No matched products."
-    return f"Customer message:\n{user_text}\n\nMatched products from database:\n{product_lines}"
+    product_lines = "\n".join(format_product_for_ai(product) for product in products) or "Brak dopasowanych produktów."
+    return f"Wiadomość klienta:\n{user_text}\n\nDopasowane produkty z bazy:\n{product_lines}"
 
 
 def format_product_for_ai(product: Product) -> str:
-    attributes = ", ".join(f"{key}: {value}" for key, value in product.attributes.items()) or "no attributes"
-    tags = ", ".join(product.tags) or "no tags"
+    attributes = ", ".join(f"{key}: {value}" for key, value in product.attributes.items()) or "brak atrybutów"
+    tags = ", ".join(product.tags) or "brak tagów"
     return (
         f"- id: {product.id}; name: {product.name}; price: {product.price:.0f} {product.currency}; "
-        f"category: {product.category}; stock: {product.stock_status}; tags: {tags}; "
-        f"attributes: {attributes}; description: {product.description}"
+        f"kategoria: {product.category}; stan: {product.stock_status}; tags: {tags}; "
+        f"atrybuty: {attributes}; opis: {product.description}"
     )
 
 
@@ -97,25 +97,21 @@ def build_fallback_reply(user_text: str, products: list[Product], language: str)
     if not products:
         return localized(
             language,
-            ru="Я пока работаю без подключенного AI. Напишите, для какой комнаты нужна лампа и какой бюджет.",
             en="AI is not connected yet. Tell me the room and your budget, and I will use the catalog data.",
-            pl="AI nie jest jeszcze podlaczone. Napisz, do jakiego pokoju potrzebujesz lampy i jaki masz budzet.",
+            pl="AI nie jest jeszcze podłączone. Napisz, do jakiego pokoju potrzebujesz lampy i jaki masz budżet.",
         )
 
     intro = localized(
         language,
-        ru="Пока AI-ключ не подключен, я могу показать подходящие товары из базы:",
         en="The AI key is not connected yet, but I can show matching products from the database:",
-        pl="Klucz AI nie jest jeszcze podlaczony, ale moge pokazac pasujace produkty z bazy:",
+        pl="Klucz AI nie jest jeszcze podłączony, ale mogę pokazać pasujące produkty z bazy:",
     )
     lines = [intro]
     lines.extend(f"- {product.name}: {product.price:.0f} {product.currency}. {product.description}" for product in products)
     return "\n".join(lines)
 
 
-def localized(language: str, ru: str, en: str, pl: str) -> str:
+def localized(language: str, en: str, pl: str) -> str:
     if language == "en":
         return en
-    if language == "pl":
-        return pl
-    return ru
+    return pl

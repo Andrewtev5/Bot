@@ -1,50 +1,50 @@
-# Lamp Store Bot
+# Bot sklepu z lampami
 
-Python backend for the lamp store chatbot.
+Backend Python dla chatbota sklepu z lampami.
 
-The project is prepared for a future Grok API key, but it can run without AI. In the safe default mode it uses demo products and returns catalog-based fallback replies.
+Projekt jest przygotowany pod przyszły klucz API Grok, ale może działać bez AI. W domyślnym trybie bezpiecznym używa produktów demonstracyjnych i zwraca odpowiedzi na podstawie katalogu.
 
-## Architecture
+## Architektura
 
 ```text
-site chat widget
-  -> FastAPI backend
-  -> product repository
-  -> Microsoft SQL Server or demo products
-  -> AI provider
-  -> Grok API or fallback provider
-  -> response back to the site
+widget czatu na stronie
+  -> backend FastAPI
+  -> repozytorium produktów
+  -> Microsoft SQL Server albo produkty demonstracyjne
+  -> dostawca AI
+  -> Grok API albo odpowiedź zapasowa
+  -> odpowiedź do strony
 ```
 
-## Main Parts
+## Główne elementy
 
-- `app/main.py` - FastAPI application.
-- `app/api/routes/chat.py` - chat API endpoints.
-- `app/api/routes/products.py` - product API endpoints.
-- `app/services/chat_service.py` - main chat flow.
-- `app/services/ai_provider.py` - Grok integration point and no-AI fallback.
-- `app/repositories/product_repository.py` - product lookup from memory or Microsoft SQL Server.
-- `database/schema.sql` - Microsoft SQL Server schema for products and future chat history.
+- `app/main.py` - aplikacja FastAPI.
+- `app/api/routes/chat.py` - endpointy API czatu.
+- `app/api/routes/products.py` - endpointy API produktów.
+- `app/services/chat_service.py` - główny przepływ rozmowy.
+- `app/services/ai_provider.py` - miejsce integracji Grok i odpowiedź zapasowa bez AI.
+- `app/repositories/product_repository.py` - wyszukiwanie produktów z pamięci albo Microsoft SQL Server.
+- `database/schema.sql` - schemat Microsoft SQL Server dla produktów i przyszłej historii czatu.
 
-## Environment
+## Środowisko
 
-Copy `.env.example` to `.env` and fill only what you need.
+Skopiuj `.env.example` do `.env` i uzupełnij tylko potrzebne wartości.
 
-Default safe mode:
+Domyślny tryb bezpieczny:
 
 ```env
 PRODUCT_DB_MODE=memory
 AI_PROVIDER=none
 ```
 
-Microsoft SQL Server mode:
+Tryb Microsoft SQL Server:
 
 ```env
 PRODUCT_DB_MODE=mssql
 SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
 ```
 
-Future Grok mode:
+Tryb Grok:
 
 ```env
 AI_PROVIDER=grok
@@ -52,19 +52,19 @@ GROK_API_KEY=your_xai_api_key_here
 GROK_MODEL=grok-4-1-fast
 ```
 
-Do not write the Grok API key directly in source code.
+Nie wpisuj klucza API Grok bezpośrednio w kodzie źródłowym.
 
-## Run
+## Uruchomienie
 
 ```powershell
-cd D:\Диплом\Bot
+cd D:\Diploma\Bot
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-API documentation after startup:
+Dokumentacja API po uruchomieniu:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -79,23 +79,23 @@ http://127.0.0.1:8000/docs
 - `GET /api/v1/chat/sessions/{session_id}`
 - `POST /api/v1/chat/messages`
 
-Example chat request:
+Przykładowe zapytanie do czatu:
 
 ```json
 {
   "session_id": null,
-  "language": "ru",
-  "text": "Посоветуй лампу для спальни до 50 PLN",
+  "language": "pl",
+  "text": "Doradź lampę do sypialni do 50 PLN",
   "metadata": {
     "source": "site-widget"
   }
 }
 ```
 
-## How Grok Will Be Connected
+## Jak zostanie podłączony Grok
 
-The site sends a message to `POST /api/v1/chat/messages`.
+Strona wysyła wiadomość do `POST /api/v1/chat/messages`.
 
-The backend searches matching products in the database and sends only those products to Grok. Grok receives the user's question and real product data, then returns a consultant-style answer.
+Backend wyszukuje pasujące produkty w bazie i wysyła do Grok tylko te produkty. Grok otrzymuje pytanie użytkownika oraz prawdziwe dane produktowe, a potem zwraca odpowiedź w stylu konsultanta.
 
-This is cheaper and safer than sending the whole catalog to AI on every message.
+To jest tańsze i bezpieczniejsze niż wysyłanie całego katalogu do AI przy każdej wiadomości.

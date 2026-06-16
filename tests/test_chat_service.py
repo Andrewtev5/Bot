@@ -10,7 +10,7 @@ def build_service() -> ChatService:
         session_repository=InMemorySessionRepository(),
         product_repository=InMemoryProductRepository(SAMPLE_PRODUCTS),
         ai_provider=NoAiProvider(),
-        default_language="ru",
+        default_language="pl",
         max_products_for_ai=5,
     )
 
@@ -18,7 +18,7 @@ def build_service() -> ChatService:
 def test_service_creates_session_and_reply():
     service = build_service()
 
-    session, reply, matched_products = service.process_message("посоветуй лампу для спальни")
+    session, reply, matched_products = service.process_message("doradź lampę do sypialni")
 
     assert session.id
     assert reply.role.value == "assistant"
@@ -30,7 +30,7 @@ def test_service_creates_session_and_reply():
 def test_service_finds_price_by_product_query():
     service = build_service()
 
-    session, reply, matched_products = service.process_message("цена smart wifi lamp")
+    session, reply, matched_products = service.process_message("cena smart wifi lamp")
 
     assert session.id
     assert "Smart WiFi Lamp" in reply.text

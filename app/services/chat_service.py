@@ -23,7 +23,7 @@ class ChatService:
         session_repository: InMemorySessionRepository,
         product_repository: ProductRepository,
         ai_provider: AiProvider,
-        default_language: str = "ru",
+        default_language: str = "pl",
         max_products_for_ai: int = 5,
     ) -> None:
         self._session_repository = session_repository
@@ -103,12 +103,12 @@ def normalize_message(value: str) -> str:
 
 def detect_intent(text: str) -> str:
     normalized = text.lower()
-    if any(token in normalized for token in {"цена", "price", "cena", "сколько"}):
+    if any(token in normalized for token in {"price", "cena", "koszt", "ile"}):
         return "price"
-    if any(token in normalized for token in {"доставка", "delivery", "dostawa"}):
+    if any(token in normalized for token in {"delivery", "dostawa"}):
         return "delivery"
-    if any(token in normalized for token in {"возврат", "return", "zwrot"}):
+    if any(token in normalized for token in {"return", "zwrot"}):
         return "return"
-    if any(token in normalized for token in {"подбери", "посоветуй", "recommend", "suggest", "wybierz"}):
+    if any(token in normalized for token in {"recommend", "suggest", "wybierz", "doradź", "poleć"}):
         return "recommendation"
     return "consultation"

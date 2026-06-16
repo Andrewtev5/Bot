@@ -14,7 +14,7 @@ class Settings:
     port: int = 8000
     product_db_mode: str = "memory"
     sql_server_connection_string: str = ""
-    default_language: str = "ru"
+    default_language: str = "pl"
     allowed_origins: tuple[str, ...] = ("*",)
     ai_provider: str = "none"
     grok_api_key: str = ""
@@ -61,7 +61,7 @@ def load_settings() -> Settings:
         port=int(os.getenv("PORT", "8000")),
         product_db_mode=os.getenv("PRODUCT_DB_MODE", "memory").strip().lower(),
         sql_server_connection_string=os.getenv("SQL_SERVER_CONNECTION_STRING", "").strip(),
-        default_language=os.getenv("DEFAULT_LANGUAGE", "ru").strip().lower(),
+        default_language=os.getenv("DEFAULT_LANGUAGE", "pl").strip().lower(),
         allowed_origins=_parse_origins(os.getenv("ALLOWED_ORIGINS")),
         ai_provider=os.getenv("AI_PROVIDER", "none").strip().lower(),
         grok_api_key=os.getenv("GROK_API_KEY", "").strip(),
