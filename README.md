@@ -2,7 +2,7 @@
 
 Backend Python dla chatbota sklepu z lampami.
 
-Projekt jest przygotowany pod przyszły klucz API Grok, ale może działać bez AI. W domyślnym trybie bezpiecznym używa produktów demonstracyjnych i zwraca odpowiedzi na podstawie katalogu.
+Projekt jest przygotowany pod klucz API Grok, ale może działać bez AI. W trybie zapasowym bot wyszukuje produkty w katalogu i zwraca prostą odpowiedź bez zewnętrznego modelu.
 
 ## Architektura
 
@@ -10,8 +10,7 @@ Projekt jest przygotowany pod przyszły klucz API Grok, ale może działać bez 
 widget czatu na stronie
   -> backend FastAPI
   -> repozytorium produktów
-  -> Microsoft SQL Server albo produkty demonstracyjne
-  -> dostawca AI
+  -> Microsoft SQL Server LocalDB
   -> Grok API albo odpowiedź zapasowa
   -> odpowiedź do strony
 ```
@@ -22,26 +21,39 @@ widget czatu na stronie
 - `app/api/routes/chat.py` - endpointy API czatu.
 - `app/api/routes/products.py` - endpointy API produktów.
 - `app/services/chat_service.py` - główny przepływ rozmowy.
-- `app/services/ai_provider.py` - miejsce integracji Grok i odpowiedź zapasowa bez AI.
-- `app/repositories/product_repository.py` - wyszukiwanie produktów z pamięci albo Microsoft SQL Server.
-- `database/schema.sql` - schemat Microsoft SQL Server dla produktów i przyszłej historii czatu.
+- `app/services/ai_provider.py` - integracja Grok i odpowiedź zapasowa bez AI.
+- `app/repositories/product_repository.py` - wyszukiwanie produktów w Microsoft SQL Server albo w pamięci.
+- `database/schema.sql` - odwołanie do głównego schematu z `DataBace/02_init_schema.sql`.
+
+## Baza danych
+
+Główna baza projektu:
+
+```text
+DiplomaStore
+```
+
+Domyślne połączenie:
+
+```env
+SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
+```
+
+Główny schemat znajduje się w:
+
+```text
+DataBace/02_init_schema.sql
+```
 
 ## Środowisko
 
 Skopiuj `.env.example` do `.env` i uzupełnij tylko potrzebne wartości.
 
-Domyślny tryb bezpieczny:
-
-```env
-PRODUCT_DB_MODE=memory
-AI_PROVIDER=none
-```
-
 Tryb Microsoft SQL Server:
 
 ```env
 PRODUCT_DB_MODE=mssql
-SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=localhost;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
+SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
 ```
 
 Tryb Grok:
@@ -91,11 +103,3 @@ Przykładowe zapytanie do czatu:
   }
 }
 ```
-
-## Jak zostanie podłączony Grok
-
-Strona wysyła wiadomość do `POST /api/v1/chat/messages`.
-
-Backend wyszukuje pasujące produkty w bazie i wysyła do Grok tylko te produkty. Grok otrzymuje pytanie użytkownika oraz prawdziwe dane produktowe, a potem zwraca odpowiedź w stylu konsultanta.
-
-To jest tańsze i bezpieczniejsze niż wysyłanie całego katalogu do AI przy każdej wiadomości.

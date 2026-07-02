@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+import unicodedata
 from typing import Any, Protocol
 
 from app.core.config import Settings
@@ -49,7 +51,7 @@ class SqlServerProductRepository:
         self._columns: set[str] | None = None
 
     def list_products(self) -> list[Product]:
-        rows = self._fetch_all(f"SELECT TOP (100) {self._select_clause()} FROM products ORDER BY name")
+        rows = self._fetch_all(f"SELECT TOP (500) {self._select_clause()} FROM products ORDER BY name")
         return [map_sql_server_product(row) for row in rows]
 
     def get_product(self, product_id: str) -> Product | None:
@@ -61,18 +63,21 @@ class SqlServerProductRepository:
         if not normalized:
             return self.list_products()[:limit]
 
-        like = f"%{normalized}%"
-        search_columns = self._search_columns()
-        rows = self._fetch_all(
-            f"""
-            SELECT TOP ({int(limit)}) {self._select_clause()}
-            FROM products
-            WHERE {" OR ".join(f"LOWER(COALESCE(CAST({column} AS NVARCHAR(MAX)), '')) LIKE ?" for column in search_columns)}
-            ORDER BY name
-            """,
-            tuple(like for _ in search_columns),
-        )
-        return [map_sql_server_product(row) for row in rows]
+        products = self.list_products()
+        scored: list[tuple[int, Product]] = []
+        for product in products:
+            score = score_product(product, normalized)
+            if score > 0:
+                scored.append((score, product))
+
+        scored.sort(key=lambda item: item[0], reverse=True)
+        if scored:
+            return [product for _, product in scored[:limit]]
+
+        if is_lamp_query(normalized):
+            return products[:limit]
+
+        return []
 
     def _select_clause(self) -> str:
         columns = self._get_columns()
@@ -156,29 +161,101 @@ def build_product_repository(settings: Settings) -> ProductRepository:
 
 
 def normalize_text(value: str) -> str:
-    return " ".join(value.lower().strip().split())
+    return " ".join(re.sub(r"[^\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+", " ", value.lower()).strip().split())
+
+
+def comparable_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", normalize_text(value))
+    return "".join(character for character in normalized if not unicodedata.combining(character))
+
+
+STOP_WORDS = {
+    "a",
+    "albo",
+    "and",
+    "czy",
+    "do",
+    "dla",
+    "i",
+    "in",
+    "na",
+    "or",
+    "oraz",
+    "the",
+    "w",
+    "with",
+    "z",
+}
+
+QUERY_SYNONYMS = {
+    "lampka": {"lampa", "lamp", "light"},
+    "lampki": {"lampa", "lamp", "light"},
+    "lampke": {"lampa", "lamp", "light"},
+    "lampy": {"lampa", "lamp", "light"},
+    "zarowka": {"lampa", "led", "light"},
+    "zarowke": {"lampa", "led", "light"},
+    "zarowki": {"lampa", "led", "light"},
+    "swiatlo": {"lighting", "light", "lampa"},
+    "swiatla": {"lighting", "light", "lampa"},
+    "biale": {"jasne", "white", "clear", "led"},
+    "biala": {"jasne", "white", "clear", "led"},
+    "bialy": {"jasne", "white", "clear", "led"},
+    "lazienki": {"lazienka", "bathroom", "jasne", "led"},
+    "lazienka": {"bathroom", "jasne", "led"},
+}
+
+
+def query_terms(query: str) -> set[str]:
+    terms = {
+        term
+        for term in comparable_text(query).split()
+        if len(term) > 2 and term not in STOP_WORDS
+    }
+
+    expanded = set(terms)
+    for term in terms:
+        expanded.update(QUERY_SYNONYMS.get(term, set()))
+
+    return expanded
+
+
+def is_lamp_query(query: str) -> bool:
+    terms = query_terms(query)
+    return bool(terms & {"lamp", "lampa", "led", "light", "lighting", "swiatlo"})
 
 
 def score_product(product: Product, query: str) -> int:
-    haystack = " ".join(
-        [
-            product.id,
-            product.name,
-            product.description,
-            " ".join(product.tags),
-            " ".join(product.keywords),
-            " ".join(f"{key} {value}" for key, value in product.attributes.items()),
-        ]
-    ).lower()
+    product_id = comparable_text(product.id)
+    name = comparable_text(product.name)
+    category = comparable_text(product.category)
+    description = comparable_text(product.description)
+    tags = comparable_text(" ".join(product.tags))
+    keywords = comparable_text(" ".join(product.keywords))
+    attributes = comparable_text(" ".join(f"{key} {value}" for key, value in product.attributes.items()))
+    haystack = " ".join([product_id, name, category, description, tags, keywords, attributes])
+    comparable_query = comparable_text(query)
 
-    if query in product.id.lower():
+    if comparable_query in product_id:
         return 100
-    if query in product.name.lower():
+    if comparable_query in name:
         return 90
-    if query in haystack:
+    if comparable_query in haystack:
         return 60
 
-    return sum(10 for word in query.split() if word and word in haystack)
+    score = 0
+    for term in query_terms(query):
+        if term in product_id:
+            score += 35
+        if term in name:
+            score += 30
+        if term in category or term in tags:
+            score += 22
+        if term in keywords:
+            score += 16
+        if term in description or term in attributes:
+            score += 10
+
+    return score
 
 
 def map_sql_server_product(row: Any) -> Product:
@@ -189,9 +266,9 @@ def map_sql_server_product(row: Any) -> Product:
         currency=str(row.currency or "PLN"),
         category=str(row.category or "lamp"),
         description=str(row.description or ""),
-        tags=[],
-        keywords=[],
+        tags=[str(row.category or "lamp")],
+        keywords=normalize_text(f"{row.name} {row.category} {row.description}").split(),
         stock_status=str(row.stock_status or "unknown"),
         image_url=str(row.image_url) if row.image_url else None,
-        attributes={},
+        attributes={"category": str(row.category or "lamp")},
     )
