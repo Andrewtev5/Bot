@@ -166,7 +166,8 @@ def normalize_text(value: str) -> str:
 
 def comparable_text(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", normalize_text(value))
-    return "".join(character for character in normalized if not unicodedata.combining(character))
+    without_marks = "".join(character for character in normalized if not unicodedata.combining(character))
+    return without_marks.replace("ł", "l")
 
 
 STOP_WORDS = {
@@ -200,6 +201,19 @@ QUERY_SYNONYMS = {
     "biale": {"jasne", "white", "clear", "led"},
     "biala": {"jasne", "white", "clear", "led"},
     "bialy": {"jasne", "white", "clear", "led"},
+    "bialym": {"jasne", "white", "clear", "neutralne", "led"},
+    "neutralna": {"biale", "jasne", "white", "clear", "led"},
+    "neutralne": {"biale", "jasne", "white", "clear", "led"},
+    "neutralny": {"biale", "jasne", "white", "clear", "led"},
+    "jasna": {"biale", "neutralne", "white", "clear", "led"},
+    "jasne": {"biale", "neutralne", "white", "clear", "led"},
+    "jasny": {"biale", "neutralne", "white", "clear", "led"},
+    "ciepla": {"zolte", "warm", "ambient", "cozy"},
+    "cieple": {"zolte", "warm", "ambient", "cozy"},
+    "cieply": {"zolte", "warm", "ambient", "cozy"},
+    "zolta": {"cieple", "warm", "ambient", "cozy"},
+    "zolte": {"cieple", "warm", "ambient", "cozy"},
+    "zolty": {"cieple", "warm", "ambient", "cozy"},
     "lazienki": {"lazienka", "bathroom", "jasne", "led"},
     "lazienka": {"bathroom", "jasne", "led"},
 }

@@ -82,7 +82,9 @@ class ChatService:
         return session, assistant_message, reply.matched_products
 
     def _build_reply(self, text: str, language: str, session) -> AssistantReply:
-        if is_out_of_scope(text):
+        intent = detect_intent(text)
+
+        if is_out_of_scope(text, session):
             return AssistantReply(
                 text=build_out_of_scope_reply(language),
                 matched_products=[],
@@ -91,11 +93,31 @@ class ChatService:
                 model=None,
             )
 
-        intent = detect_intent(text)
-
+        search_text = build_contextual_search_text(text, session)
         matched_products: list[Product] = []
         if intent != "greeting":
-            matched_products = self._product_repository.search_products(text, limit=self._max_products_for_ai)
+            matched_products = self._product_repository.search_products(search_text, limit=self._max_products_for_ai)
+
+        if intent == "more_recommendations":
+            matched_products = get_more_recommendations(
+                session=session,
+                product_repository=self._product_repository,
+                limit=self._max_products_for_ai,
+            )
+
+        if intent == "contextual_recommendation" and not matched_products:
+            matched_products = get_more_recommendations(
+                session=session,
+                product_repository=self._product_repository,
+                limit=self._max_products_for_ai,
+            )
+
+        if intent == "contextual_recommendation" and len(matched_products) < self._max_products_for_ai:
+            matched_products = fill_recommendations(
+                current_products=matched_products,
+                product_repository=self._product_repository,
+                limit=self._max_products_for_ai,
+            )
 
         if intent in {"library_request", "cart_request"}:
             previous_products = get_previous_matched_products(session, self._product_repository, self._max_products_for_ai)
@@ -149,6 +171,10 @@ def detect_intent(text: str) -> str:
     normalized = normalize_for_matching(text)
     if is_greeting_message(text):
         return "greeting"
+    if contains_contextual_choice_phrase(normalized) or contains_light_preference_phrase(normalized):
+        return "contextual_recommendation"
+    if contains_more_recommendation_phrase(normalized):
+        return "more_recommendations"
     if any(token in normalized for token in {"opowiedz", "opis", "szczegoly", "details", "describe", "tell me about"}):
         return "product_details"
     if "bibliotek" in normalized or "library" in normalized or "zapisz" in normalized:
@@ -206,6 +232,34 @@ STORE_TOPIC_KEYWORDS = {
     "zamow",
     "zarow",
     "zwrot",
+    "zol",
+}
+
+CONTEXTUAL_CHOICE_KEYWORDS = {
+    "both",
+    "either",
+    "jedno i drugie",
+    "moze byc",
+    "oba",
+    "obie",
+    "obydwa",
+    "obydwie",
+    "te i te",
+    "to i to",
+}
+
+LIGHT_PREFERENCE_KEYWORDS = {
+    "amber": {"cieple", "zolte", "ambient"},
+    "bial": {"neutralne", "biale", "jasne"},
+    "ciepl": {"cieple", "zolte", "ambient"},
+    "cold": {"zimne", "jasne", "biale"},
+    "cool": {"zimne", "jasne", "biale"},
+    "jasn": {"jasne", "biale", "neutralne"},
+    "neutral": {"neutralne", "biale", "jasne"},
+    "white": {"neutralne", "biale", "jasne"},
+    "yellow": {"cieple", "zolte", "ambient"},
+    "zimn": {"zimne", "jasne", "biale"},
+    "zolt": {"cieple", "zolte", "ambient"},
 }
 
 ACTION_NUMBER_WORDS = {
@@ -267,6 +321,21 @@ SOCIAL_STORE_KEYWORDS = {
     "thanks",
 }
 
+MORE_RECOMMENDATION_KEYWORDS = {
+    "alternatyw",
+    "another",
+    "different",
+    "else",
+    "inne",
+    "inny",
+    "jeszcze",
+    "more",
+    "nastepne",
+    "next",
+    "propozycj",
+    "wariant",
+}
+
 OUT_OF_SCOPE_KEYWORDS = {
     "adwokat",
     "atak",
@@ -311,13 +380,22 @@ OUT_OF_SCOPE_KEYWORDS = {
 }
 
 
-def is_out_of_scope(text: str) -> bool:
+def is_out_of_scope(text: str, session=None) -> bool:
     normalized = normalize_for_matching(text)
 
     if contains_blocked_topic(normalized):
         return True
 
-    if is_greeting_message(text) or contains_social_store_phrase(normalized):
+    if (
+        is_greeting_message(text)
+        or contains_social_store_phrase(normalized)
+        or contains_more_recommendation_phrase(normalized)
+        or contains_contextual_choice_phrase(normalized)
+        or contains_light_preference_phrase(normalized)
+    ):
+        return False
+
+    if session is not None and has_recent_assistant_context(session) and is_short_contextual_reply(normalized):
         return False
 
     return not contains_store_topic(normalized)
@@ -331,6 +409,29 @@ def is_greeting_message(text: str) -> bool:
 
 def contains_social_store_phrase(normalized: str) -> bool:
     return any(keyword in normalized for keyword in SOCIAL_STORE_KEYWORDS)
+
+
+def contains_more_recommendation_phrase(normalized: str) -> bool:
+    return any(keyword in normalized for keyword in MORE_RECOMMENDATION_KEYWORDS)
+
+
+def contains_contextual_choice_phrase(normalized: str) -> bool:
+    return any(keyword in normalized for keyword in CONTEXTUAL_CHOICE_KEYWORDS)
+
+
+def contains_light_preference_phrase(normalized: str) -> bool:
+    return any(keyword in normalized for keyword in LIGHT_PREFERENCE_KEYWORDS)
+
+
+def is_short_contextual_reply(normalized: str) -> bool:
+    words = normalized.split()
+    if not words or len(words) > 8:
+        return False
+    return (
+        contains_contextual_choice_phrase(normalized)
+        or contains_light_preference_phrase(normalized)
+        or any(word in {"tak", "nie", "ok", "okej", "moze", "prosze"} for word in words)
+    )
 
 
 def contains_blocked_topic(normalized: str) -> bool:
@@ -361,6 +462,83 @@ def get_previous_matched_products(session, product_repository: ProductRepository
             return products
 
     return []
+
+
+def get_previous_matched_product_ids(session) -> set[str]:
+    product_ids: set[str] = set()
+    for message in session.messages:
+        values = message.metadata.get("matched_product_ids") if message.metadata else None
+        if not values:
+            continue
+        product_ids.update(str(product_id) for product_id in values)
+    return product_ids
+
+
+def get_more_recommendations(session, product_repository: ProductRepository, limit: int) -> list[Product]:
+    previous_ids = get_previous_matched_product_ids(session)
+    products = [
+        product
+        for product in product_repository.list_products()
+        if product.id not in previous_ids
+    ]
+
+    if not products:
+        products = product_repository.list_products()
+
+    return products[:limit]
+
+
+def fill_recommendations(current_products: list[Product], product_repository: ProductRepository, limit: int) -> list[Product]:
+    selected = list(current_products)
+    selected_ids = {product.id for product in selected}
+
+    for product in product_repository.list_products():
+        if product.id in selected_ids:
+            continue
+        selected.append(product)
+        selected_ids.add(product.id)
+        if len(selected) >= limit:
+            break
+
+    return selected[:limit]
+
+
+def has_recent_assistant_context(session) -> bool:
+    for message in reversed(session.messages[-6:]):
+        if message.role.value == "assistant":
+            return True
+    return False
+
+
+def get_recent_user_context(session) -> str:
+    texts: list[str] = []
+    for message in reversed(session.messages[:-1]):
+        if message.role.value != "user":
+            continue
+        normalized = normalize_for_matching(message.text)
+        if contains_store_topic(normalized) or contains_light_preference_phrase(normalized):
+            texts.append(message.text)
+        if len(texts) >= 2:
+            break
+    return " ".join(reversed(texts))
+
+
+def build_contextual_search_text(text: str, session) -> str:
+    normalized = normalize_for_matching(text)
+    parts = [get_recent_user_context(session), text, expand_user_light_preferences(normalized)]
+
+    if contains_contextual_choice_phrase(normalized):
+        parts.append("cieple neutralne biale zolte jasne")
+
+    return " ".join(part for part in parts if part).strip() or text
+
+
+def expand_user_light_preferences(normalized: str) -> str:
+    expanded: set[str] = set()
+    for keyword, synonyms in LIGHT_PREFERENCE_KEYWORDS.items():
+        if keyword in normalized:
+            expanded.update(synonyms)
+    return " ".join(sorted(expanded))
 
 
 def select_products_for_action(text: str, products: list[Product]) -> list[Product]:
