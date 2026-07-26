@@ -16,6 +16,7 @@ class Settings:
     sql_server_connection_string: str = ""
     default_language: str = "pl"
     allowed_origins: tuple[str, ...] = ("*",)
+    allowed_origin_regex: str | None = None
     ai_provider: str = "none"
     grok_api_key: str = ""
     grok_model: str = "grok-4-1-fast"
@@ -63,6 +64,7 @@ def load_settings() -> Settings:
         sql_server_connection_string=os.getenv("SQL_SERVER_CONNECTION_STRING", "").strip(),
         default_language=os.getenv("DEFAULT_LANGUAGE", "pl").strip().lower(),
         allowed_origins=_parse_origins(os.getenv("ALLOWED_ORIGINS")),
+        allowed_origin_regex=os.getenv("ALLOWED_ORIGIN_REGEX", "").strip() or None,
         ai_provider=os.getenv("AI_PROVIDER", "none").strip().lower(),
         grok_api_key=os.getenv("GROK_API_KEY", "").strip(),
         grok_model=os.getenv("GROK_MODEL", "grok-4-1-fast").strip(),
