@@ -75,6 +75,13 @@ class SqlServerProductRepository:
             return [product for _, product in scored[:limit]]
 
         if is_lamp_query(normalized):
+            light_preference = light_preference_for_query(normalized)
+            if light_preference:
+                products = [
+                    product
+                    for product in products
+                    if is_product_allowed_for_light_preference(product, light_preference)
+                ]
             return products[:limit]
 
         return []
@@ -208,6 +215,17 @@ QUERY_SYNONYMS = {
     "jasna": {"biale", "neutralne", "white", "clear", "led"},
     "jasne": {"biale", "neutralne", "white", "clear", "led"},
     "jasny": {"biale", "neutralne", "white", "clear", "led"},
+    "default": {"biale", "neutralne", "jasne", "led"},
+    "domyslna": {"biale", "neutralne", "jasne", "led"},
+    "domyslne": {"biale", "neutralne", "jasne", "led"},
+    "klasyczna": {"biale", "neutralne", "jasne", "led"},
+    "klasyczne": {"biale", "neutralne", "jasne", "led"},
+    "normalna": {"biale", "neutralne", "jasne", "led"},
+    "normalne": {"biale", "neutralne", "jasne", "led"},
+    "standardowa": {"biale", "neutralne", "jasne", "led"},
+    "standardowe": {"biale", "neutralne", "jasne", "led"},
+    "zwykla": {"biale", "neutralne", "jasne", "led"},
+    "zwykle": {"biale", "neutralne", "jasne", "led"},
     "ciepla": {"zolte", "warm", "ambient", "cozy"},
     "cieple": {"zolte", "warm", "ambient", "cozy"},
     "cieply": {"zolte", "warm", "ambient", "cozy"},
@@ -216,6 +234,121 @@ QUERY_SYNONYMS = {
     "zolty": {"cieple", "warm", "ambient", "cozy"},
     "lazienki": {"lazienka", "bathroom", "jasne", "led"},
     "lazienka": {"bathroom", "jasne", "led"},
+}
+
+
+WHITE_LIGHT_QUERY_TERMS = {
+    "biala",
+    "biale",
+    "bialy",
+    "bialym",
+    "clear",
+    "cold",
+    "cool",
+    "default",
+    "domyslna",
+    "domyslne",
+    "jasna",
+    "jasne",
+    "jasny",
+    "klasyczna",
+    "klasyczne",
+    "neutral",
+    "neutralna",
+    "neutralne",
+    "neutralny",
+    "normalna",
+    "normalne",
+    "standardowa",
+    "standardowe",
+    "white",
+    "zimna",
+    "zimne",
+    "zwykla",
+    "zwykle",
+}
+
+WARM_LIGHT_QUERY_TERMS = {
+    "amber",
+    "ambient",
+    "ciepla",
+    "cieple",
+    "cieply",
+    "cozy",
+    "golden",
+    "nastrojowa",
+    "nastrojowe",
+    "przytulna",
+    "przytulne",
+    "warm",
+    "yellow",
+    "zolta",
+    "zolte",
+    "zolty",
+}
+
+WHITE_PRODUCT_MARKERS = {
+    "bial",
+    "bathroom",
+    "clear",
+    "daylight",
+    "lazien",
+    "neutral",
+    "plafon",
+    "white",
+    "zimn",
+}
+
+SOFT_DECORATIVE_PRODUCT_MARKERS = {
+    "accent",
+    "akcent",
+    "ambient",
+    "ambientow",
+    "amber",
+    "bedside",
+    "brass",
+    "cage",
+    "ceramic",
+    "ciepl",
+    "cloud",
+    "comfort",
+    "cozy",
+    "crystal",
+    "decor",
+    "decorative",
+    "dziecie",
+    "edison",
+    "elegan",
+    "evening",
+    "filament",
+    "globe",
+    "golden",
+    "industrial",
+    "kids",
+    "klatk",
+    "krysztal",
+    "lantern",
+    "loft",
+    "lukow",
+    "miek",
+    "mood",
+    "mosiez",
+    "nastroj",
+    "night",
+    "nocn",
+    "premium",
+    "przytul",
+    "rattan",
+    "relaxed",
+    "reflektor",
+    "soft warm",
+    "sofa",
+    "spotlight",
+    "szyn",
+    "warm",
+    "wieczor",
+    "yellow",
+    "zolt",
 }
 
 
@@ -233,6 +366,54 @@ def query_terms(query: str) -> set[str]:
     return expanded
 
 
+def light_preference_for_query(query: str) -> str | None:
+    terms = {
+        term
+        for term in comparable_text(query).split()
+        if len(term) > 2 and term not in STOP_WORDS
+    }
+    wants_white = bool(terms & WHITE_LIGHT_QUERY_TERMS)
+    wants_warm = bool(terms & WARM_LIGHT_QUERY_TERMS)
+
+    if wants_white and not wants_warm:
+        return "white"
+    if wants_warm and not wants_white:
+        return "warm"
+    return None
+
+
+def product_text(product: Product) -> str:
+    return " ".join(
+        [
+            comparable_text(product.id),
+            comparable_text(product.name),
+            comparable_text(product.category),
+            comparable_text(product.description),
+            comparable_text(" ".join(product.tags)),
+            comparable_text(" ".join(product.keywords)),
+            comparable_text(" ".join(f"{key} {value}" for key, value in product.attributes.items())),
+        ]
+    )
+
+
+def contains_any_marker(text: str, markers: set[str]) -> bool:
+    return any(marker in text for marker in markers)
+
+
+def is_product_allowed_for_light_preference(product: Product, preference: str | None) -> bool:
+    if preference not in {"white", "warm"}:
+        return True
+
+    haystack = product_text(product)
+    has_white_profile = contains_any_marker(haystack, WHITE_PRODUCT_MARKERS)
+    has_soft_decorative_profile = contains_any_marker(haystack, SOFT_DECORATIVE_PRODUCT_MARKERS)
+
+    if preference == "white":
+        return not has_soft_decorative_profile or has_white_profile
+
+    return has_soft_decorative_profile or not has_white_profile
+
+
 def is_lamp_query(query: str) -> bool:
     terms = query_terms(query)
     return bool(terms & {"lamp", "lampa", "led", "light", "lighting", "swiatlo"})
@@ -248,6 +429,10 @@ def score_product(product: Product, query: str) -> int:
     attributes = comparable_text(" ".join(f"{key} {value}" for key, value in product.attributes.items()))
     haystack = " ".join([product_id, name, category, description, tags, keywords, attributes])
     comparable_query = comparable_text(query)
+    light_preference = light_preference_for_query(query)
+
+    if not is_product_allowed_for_light_preference(product, light_preference):
+        return 0
 
     if comparable_query in product_id:
         return 100
@@ -268,6 +453,11 @@ def score_product(product: Product, query: str) -> int:
             score += 16
         if term in description or term in attributes:
             score += 10
+
+    if light_preference == "white" and contains_any_marker(haystack, WHITE_PRODUCT_MARKERS):
+        score += 18
+    if light_preference == "warm" and contains_any_marker(haystack, SOFT_DECORATIVE_PRODUCT_MARKERS):
+        score += 18
 
     return score
 

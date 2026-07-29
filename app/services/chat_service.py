@@ -1,12 +1,19 @@
 from __future__ import annotations
 
+from random import SystemRandom
 import unicodedata
 from dataclasses import dataclass
 
 from app.domain.models import ChatMessage, MessageRole, Product
-from app.repositories.product_repository import ProductRepository
+from app.repositories.product_repository import (
+    ProductRepository,
+    is_product_allowed_for_light_preference,
+    light_preference_for_query,
+)
 from app.repositories.session_repository import InMemorySessionRepository
 from app.services.ai_provider import AiProvider
+
+_random = SystemRandom()
 
 
 @dataclass(slots=True)
@@ -94,15 +101,18 @@ class ChatService:
             )
 
         search_text = build_contextual_search_text(text, session)
+        light_preference = light_preference_for_query(text) or light_preference_for_query(search_text)
         matched_products: list[Product] = []
         if intent != "greeting":
             matched_products = self._product_repository.search_products(search_text, limit=self._max_products_for_ai)
+            matched_products = filter_products_by_light_preference(matched_products, light_preference)
 
         if intent == "more_recommendations":
             matched_products = get_more_recommendations(
                 session=session,
                 product_repository=self._product_repository,
                 limit=self._max_products_for_ai,
+                light_preference=light_preference,
             )
 
         if intent == "contextual_recommendation" and not matched_products:
@@ -110,6 +120,7 @@ class ChatService:
                 session=session,
                 product_repository=self._product_repository,
                 limit=self._max_products_for_ai,
+                light_preference=light_preference,
             )
 
         if intent == "contextual_recommendation" and len(matched_products) < self._max_products_for_ai:
@@ -117,6 +128,7 @@ class ChatService:
                 current_products=matched_products,
                 product_repository=self._product_repository,
                 limit=self._max_products_for_ai,
+                light_preference=light_preference,
             )
 
         if intent in {"library_request", "cart_request"}:
@@ -140,7 +152,10 @@ class ChatService:
             )
 
         if not matched_products and intent == "recommendation":
-            matched_products = self._product_repository.list_products()[: self._max_products_for_ai]
+            matched_products = filter_products_by_light_preference(
+                self._product_repository.list_products(),
+                light_preference,
+            )[: self._max_products_for_ai]
 
         ai_response = self._ai_provider.generate_consultation(
             user_text=text,
@@ -254,12 +269,18 @@ LIGHT_PREFERENCE_KEYWORDS = {
     "ciepl": {"cieple", "zolte", "ambient"},
     "cold": {"zimne", "jasne", "biale"},
     "cool": {"zimne", "jasne", "biale"},
+    "default": {"neutralne", "biale", "jasne"},
+    "domysl": {"neutralne", "biale", "jasne"},
     "jasn": {"jasne", "biale", "neutralne"},
+    "klasycz": {"neutralne", "biale", "jasne"},
     "neutral": {"neutralne", "biale", "jasne"},
+    "normal": {"neutralne", "biale", "jasne"},
+    "standard": {"neutralne", "biale", "jasne"},
     "white": {"neutralne", "biale", "jasne"},
     "yellow": {"cieple", "zolte", "ambient"},
     "zimn": {"zimne", "jasne", "biale"},
     "zolt": {"cieple", "zolte", "ambient"},
+    "zwykl": {"neutralne", "biale", "jasne"},
 }
 
 ACTION_NUMBER_WORDS = {
@@ -474,26 +495,38 @@ def get_previous_matched_product_ids(session) -> set[str]:
     return product_ids
 
 
-def get_more_recommendations(session, product_repository: ProductRepository, limit: int) -> list[Product]:
+def get_more_recommendations(
+    session,
+    product_repository: ProductRepository,
+    limit: int,
+    light_preference: str | None = None,
+) -> list[Product]:
     previous_ids = get_previous_matched_product_ids(session)
     products = [
         product
         for product in product_repository.list_products()
-        if product.id not in previous_ids
+        if product.id not in previous_ids and is_product_allowed_for_light_preference(product, light_preference)
     ]
 
     if not products:
-        products = product_repository.list_products()
+        products = filter_products_by_light_preference(product_repository.list_products(), light_preference)
 
     return products[:limit]
 
 
-def fill_recommendations(current_products: list[Product], product_repository: ProductRepository, limit: int) -> list[Product]:
+def fill_recommendations(
+    current_products: list[Product],
+    product_repository: ProductRepository,
+    limit: int,
+    light_preference: str | None = None,
+) -> list[Product]:
     selected = list(current_products)
     selected_ids = {product.id for product in selected}
 
     for product in product_repository.list_products():
         if product.id in selected_ids:
+            continue
+        if not is_product_allowed_for_light_preference(product, light_preference):
             continue
         selected.append(product)
         selected_ids.add(product.id)
@@ -501,6 +534,14 @@ def fill_recommendations(current_products: list[Product], product_repository: Pr
             break
 
     return selected[:limit]
+
+
+def filter_products_by_light_preference(products: list[Product], light_preference: str | None) -> list[Product]:
+    return [
+        product
+        for product in products
+        if is_product_allowed_for_light_preference(product, light_preference)
+    ]
 
 
 def has_recent_assistant_context(session) -> bool:
@@ -571,10 +612,25 @@ def build_action_reply(language: str, action_type: str, products: list[Product])
     names = ", ".join(product.name for product in products)
     if language == "en":
         target = "library" if action_type == "add_to_library" else "cart"
-        return f"I will try to add this to your {target}: {names}."
+        return choose_response_variant(
+            [
+                f"I will try to add this to your {target}: {names}.",
+                f"Sure, I am sending this to your {target}: {names}.",
+                f"Done, I will pass this choice to the {target}: {names}.",
+                f"Good choice. I will try to save it in your {target}: {names}.",
+            ]
+        )
 
-    target = "biblioteki" if action_type == "add_to_library" else "koszyka"
-    return f"Dobrze, próbuję dodać do {target}: {names}."
+    target_to = "biblioteki" if action_type == "add_to_library" else "koszyka"
+    target_in = "bibliotece" if action_type == "add_to_library" else "koszyku"
+    return choose_response_variant(
+        [
+            f"Dobrze, próbuję dodać do {target_to}: {names}.",
+            f"Jasne, przekazuję ten wybór do {target_to}: {names}.",
+            f"Świetnie, spróbuję zapisać to w {target_in}: {names}.",
+            f"Dobry wybór. Dodaję do {target_to}: {names}.",
+        ]
+    )
 
 
 def detect_response_language(text: str, fallback: str) -> str:
@@ -607,13 +663,24 @@ def detect_response_language(text: str, fallback: str) -> str:
 
 def build_out_of_scope_reply(language: str) -> str:
     if language == "en":
-        return (
-            "I can help only with the lighting store: lamps, bulbs, product choice, cart, orders, delivery, "
-            "returns and warranty. Tell me what room or type of light you need, and I will suggest suitable products."
+        return choose_response_variant(
+            [
+                "I can help only with the lighting store: lamps, bulbs, product choice, cart, orders, delivery, returns and warranty. Tell me what room or type of light you need, and I will suggest suitable products.",
+                "I will keep this chat focused on lighting and store service. If you describe the room or light color, I can suggest products.",
+                "That topic is outside the store. I can help with lamps, bulbs, cart, library, delivery, returns or warranty.",
+                "I cannot help with that subject here, but I can help you choose lighting. What room are we working with?",
+            ]
         )
 
-    return (
-        "Mogę pomagać tylko w sprawach sklepu z oświetleniem: lampy, żarówki, dobór produktu, koszyk, zamówienia, "
-        "dostawa, zwroty i gwarancja. Napisz, do jakiego pomieszczenia lub jakiego typu światła potrzebujesz, "
-        "a zaproponuję odpowiednie produkty."
+    return choose_response_variant(
+        [
+            "Mogę pomagać tylko w sprawach sklepu z oświetleniem: lampy, żarówki, dobór produktu, koszyk, zamówienia, dostawa, zwroty i gwarancja. Napisz, do jakiego pomieszczenia lub jakiego typu światła potrzebujesz, a zaproponuję odpowiednie produkty.",
+            "Zostańmy przy temacie oświetlenia i obsługi sklepu. Opisz pomieszczenie albo barwę światła, a dobiorę propozycje.",
+            "Ten temat jest poza zakresem sklepu. Mogę pomóc z lampami, żarówkami, koszykiem, biblioteką, dostawą, zwrotem albo gwarancją.",
+            "W tej rozmowie pomagam tylko przy wyborze oświetlenia. Napisz, czy chodzi o światło ciepłe, neutralne czy dekoracyjne.",
+        ]
     )
+
+
+def choose_response_variant(variants: list[str]) -> str:
+    return _random.choice(variants)
