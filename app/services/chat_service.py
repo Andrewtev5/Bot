@@ -202,20 +202,26 @@ def detect_intent(text: str) -> str:
         return "delivery"
     if any(token in normalized for token in {"return", "zwrot"}):
         return "return"
-    if any(token in normalized for token in {"recommend", "suggest", "wybierz", "doradz", "polec", "pokaz"}):
+    if any(token in normalized for token in {"find", "looking for", "need", "recommend", "show", "suggest", "wybierz", "doradz", "polec", "pokaz"}):
         return "recommendation"
     return "consultation"
 
 
 STORE_TOPIC_KEYWORDS = {
     "akcent",
+    "ambient",
+    "aplik",
     "barwa",
+    "bath",
     "bial",
     "biur",
+    "bulb",
+    "buy",
     "ciepl",
     "ciem",
     "cena",
     "czujnik",
+    "delivery",
     "dostawa",
     "gwarancja",
     "jasn",
@@ -225,25 +231,47 @@ STORE_TOPIC_KEYWORDS = {
     "kolor",
     "koszyk",
     "koszt",
+    "krysztal",
     "kuch",
     "lamp",
     "led",
+    "light",
+    "lighting",
     "loft",
     "lumen",
     "lazien",
+    "magicz",
     "moc",
+    "neon",
     "noc",
+    "order",
+    "okrag",
     "opraw",
     "oswietl",
     "platnosc",
     "pokoj",
+    "price",
+    "product",
     "produkt",
     "przedpokoj",
+    "recommend",
     "reklamacja",
+    "restroom",
+    "return",
+    "rgb",
+    "room",
     "salon",
+    "shop",
     "sklep",
+    "store",
+    "suggest",
     "sypial",
     "swiatl",
+    "smart",
+    "tecz",
+    "toilet",
+    "warranty",
+    "washroom",
     "zamow",
     "zarow",
     "zwrot",
@@ -637,7 +665,24 @@ def detect_response_language(text: str, fallback: str) -> str:
     normalized = normalize_for_matching(text)
     words = set(normalized.split())
 
-    english_hints = {"hello", "hi", "thanks", "please", "show", "tell", "lamp", "light", "room", "cart", "library"}
+    english_hints = {
+        "bathroom",
+        "cart",
+        "hello",
+        "hi",
+        "lamp",
+        "library",
+        "light",
+        "lighting",
+        "please",
+        "products",
+        "restroom",
+        "room",
+        "show",
+        "suggest",
+        "tell",
+        "thanks",
+    }
     polish_hints = {
         "czesc",
         "dzien",
