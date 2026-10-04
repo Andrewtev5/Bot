@@ -291,6 +291,29 @@ CONTEXTUAL_CHOICE_KEYWORDS = {
     "to i to",
 }
 
+PRODUCT_SUBJECT_PREFIXES = {
+    "bulb",
+    "chandelier",
+    "kinkiet",
+    "lamp",
+    "light",
+    "oswietl",
+    "plafon",
+    "reflektor",
+    "zarow",
+    "zyrandol",
+}
+
+STRONG_NEW_SEARCH_PREFIXES = {
+    "inteligent",
+    "magicz",
+    "rainbow",
+    "rgb",
+    "smart",
+    "tecz",
+    "wifi",
+}
+
 LIGHT_PREFERENCE_KEYWORDS = {
     "amber": {"cieple", "zolte", "ambient"},
     "bial": {"neutralne", "biale", "jasne"},
@@ -594,12 +617,18 @@ def get_recent_user_context(session) -> str:
 
 def build_contextual_search_text(text: str, session) -> str:
     normalized = normalize_for_matching(text)
-    parts = [get_recent_user_context(session), text, expand_user_light_preferences(normalized)]
+    recent_context = "" if starts_new_product_search(normalized) else get_recent_user_context(session)
+    parts = [recent_context, text, expand_user_light_preferences(normalized)]
 
     if contains_contextual_choice_phrase(normalized):
         parts.append("cieple neutralne biale zolte jasne")
 
     return " ".join(part for part in parts if part).strip() or text
+
+
+def starts_new_product_search(normalized: str) -> bool:
+    prefixes = PRODUCT_SUBJECT_PREFIXES | STRONG_NEW_SEARCH_PREFIXES
+    return any(word.startswith(prefix) for word in normalized.split() for prefix in prefixes)
 
 
 def expand_user_light_preferences(normalized: str) -> str:

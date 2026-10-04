@@ -1,5 +1,7 @@
 from app.domain.models import Product
-from app.repositories.product_repository import InMemoryProductRepository
+from types import SimpleNamespace
+
+from app.repositories.product_repository import InMemoryProductRepository, map_sql_server_product
 
 
 def make_product(
@@ -8,6 +10,7 @@ def make_product(
     category: str,
     description: str,
     keywords: list[str] | None = None,
+    tags: list[str] | None = None,
 ) -> Product:
     return Product(
         id=product_id,
@@ -16,7 +19,7 @@ def make_product(
         currency="PLN",
         category=category,
         description=description,
-        tags=[category],
+        tags=tags or [category],
         keywords=keywords or [],
         stock_status="in_stock",
         image_url="images/lamp1.jpg",
@@ -97,3 +100,99 @@ def test_over_table_query_prefers_pendant_lamps_over_table_lamps():
     products = repository.search_products("lampy nad stół do kuchni", limit=2)
 
     assert [product.id for product in products][0] == "opal-pendant-lamp"
+
+
+def test_sql_product_mapping_loads_polish_and_english_search_tags():
+    row = SimpleNamespace(
+        id="green-marble-lamp",
+        name="Zielona lampa marmurowa",
+        name_en="Green marble lamp",
+        price=100,
+        currency="PLN",
+        category="Lampa stołowa",
+        description="Kamienna lampka na biurko.",
+        description_en="Stone desk lamp.",
+        meta_pl='["ciemnozielony marmur", "lampka stołowa"]',
+        meta_en='["dark green marble", "table lamp"]',
+        stock_status="in_stock",
+        image_url="images/lamp121.jpg",
+    )
+
+    product = map_sql_server_product(row)
+
+    assert "ciemnozielony marmur" in product.tags
+    assert "dark green marble" in product.tags
+    assert "zielona" in product.keywords
+
+
+def test_physical_green_lamp_ranks_before_rgb_for_plain_color_request():
+    repository = InMemoryProductRepository(
+        [
+            make_product(
+                "green-pendant",
+                "Zielona lampa wisząca",
+                "Lampa wisząca",
+                "Metalowy zielony klosz.",
+                tags=["zielona emaliowana lampa", "green enamel pendant"],
+            ),
+            make_product(
+                "rgb-floor",
+                "Lampa podłogowa RGB",
+                "Smart RGB",
+                "Lampa sterowana aplikacją.",
+                tags=["czerwone zielone niebieskie światło RGB", "app color control"],
+            ),
+        ]
+    )
+
+    products = repository.search_products("zielona lampa", limit=2)
+
+    assert products[0].id == "green-pendant"
+
+
+def test_rgb_lamp_ranks_first_when_user_asks_for_green_light_capability():
+    repository = InMemoryProductRepository(
+        [
+            make_product(
+                "green-pendant",
+                "Zielona lampa wisząca",
+                "Lampa wisząca",
+                "Metalowy zielony klosz.",
+                tags=["zielona emaliowana lampa", "green enamel pendant"],
+            ),
+            make_product(
+                "rgb-floor",
+                "Lampa podłogowa RGB",
+                "Smart RGB",
+                "Lampa sterowana aplikacją.",
+                tags=["czerwone zielone niebieskie światło RGB", "app color control"],
+            ),
+        ]
+    )
+
+    products = repository.search_products("lampa, która może świecić na zielono", limit=2)
+
+    assert products[0].id == "rgb-floor"
+
+
+def test_smart_query_excludes_regular_lamps():
+    repository = InMemoryProductRepository(
+        [
+            make_product(
+                "regular-night-light",
+                "Lampka nocna",
+                "Lampka stołowa",
+                "Ciepłe światło do pokoju dziecka.",
+            ),
+            make_product(
+                "smart-wifi-light",
+                "Lampa Smart WiFi",
+                "Smart home",
+                "Inteligentna lampa sterowana przez WiFi.",
+            ),
+        ]
+    )
+
+    products = repository.search_products("smart lampa", limit=5)
+
+    assert [product.id for product in products] == ["smart-wifi-light"]

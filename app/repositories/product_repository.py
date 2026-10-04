@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import re
+import subprocess
 import unicodedata
 from typing import Any, Protocol
 
@@ -48,6 +50,7 @@ class InMemoryProductRepository:
 class SqlServerProductRepository:
     def __init__(self, connection_string: str) -> None:
         self._connection_string = connection_string
+        self._resolved_connection_string: str | None = None
         self._columns: set[str] | None = None
 
     def list_products(self) -> list[Product]:
@@ -96,6 +99,10 @@ class SqlServerProductRepository:
                 COALESCE(NULLIF(currency, ''), 'PLN') AS currency,
                 COALESCE(NULLIF(tag_pl, ''), NULLIF(tag_en, ''), 'lampa') AS category,
                 COALESCE(NULLIF(description_pl, ''), NULLIF(description_en, ''), '') AS description,
+                COALESCE(name_en, '') AS name_en,
+                COALESCE(description_en, '') AS description_en,
+                COALESCE(meta_pl, '[]') AS meta_pl,
+                COALESCE(meta_en, '[]') AS meta_en,
                 CAST('in_stock' AS NVARCHAR(50)) AS stock_status,
                 image AS image_url
             """
@@ -107,6 +114,10 @@ class SqlServerProductRepository:
             COALESCE(NULLIF(currency, ''), 'PLN') AS currency,
             COALESCE(NULLIF(category, ''), 'lampa') AS category,
             COALESCE(description, '') AS description,
+            COALESCE(name, '') AS name_en,
+            COALESCE(description, '') AS description_en,
+            CAST('[]' AS NVARCHAR(MAX)) AS meta_pl,
+            CAST('[]' AS NVARCHAR(MAX)) AS meta_en,
             COALESCE(NULLIF(stock_status, ''), 'unknown') AS stock_status,
             image_url
         """
@@ -151,7 +162,7 @@ class SqlServerProductRepository:
         if not self._connection_string:
             raise RuntimeError("SQL_SERVER_CONNECTION_STRING is empty.")
 
-        connection = pyodbc.connect(self._connection_string)
+        connection = self._connect(pyodbc)
         try:
             cursor = connection.cursor()
             cursor.execute(query, params)
@@ -159,12 +170,94 @@ class SqlServerProductRepository:
         finally:
             connection.close()
 
+    def _connect(self, pyodbc):
+        last_error = None
+        if self._resolved_connection_string:
+            try:
+                return pyodbc.connect(self._resolved_connection_string, timeout=5)
+            except pyodbc.Error as error:
+                last_error = error
+                self._resolved_connection_string = None
+
+        candidates = [localdb_pipe_connection_string(self._connection_string), self._connection_string]
+        for candidate in dict.fromkeys(value for value in candidates if value):
+            try:
+                connection = pyodbc.connect(candidate, timeout=5)
+                self._resolved_connection_string = candidate
+                return connection
+            except pyodbc.Error as error:
+                last_error = error
+
+        raise last_error
+
 
 def build_product_repository(settings: Settings) -> ProductRepository:
     if settings.product_db_mode == "mssql":
         return SqlServerProductRepository(settings.sql_server_connection_string)
 
     return InMemoryProductRepository()
+
+
+def localdb_pipe_connection_string(connection_string: str) -> str | None:
+    server = connection_string_value(connection_string, "SERVER")
+    prefix = "(localdb)\\"
+    if not server or not server.lower().startswith(prefix):
+        return None
+
+    instance = server[len(prefix) :].strip()
+    if not instance:
+        return None
+
+    try:
+        subprocess.run(["sqllocaldb", "start", instance], check=True, capture_output=True, text=True)
+        result = subprocess.run(
+            ["sqllocaldb", "info", instance],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+    pipe_name = next(
+        (
+            line.split(":", 1)[1].strip()
+            for line in result.stdout.splitlines()
+            if line.lower().startswith("instance pipe name:")
+        ),
+        "",
+    )
+    if not pipe_name:
+        return None
+
+    candidate = replace_connection_value(connection_string, "SERVER", pipe_name)
+    return replace_connection_value(candidate, "ENCRYPT", "no")
+
+
+def connection_string_value(connection_string: str, key: str) -> str | None:
+    prefix = f"{key.upper()}="
+    for part in connection_string.split(";"):
+        if part.strip().upper().startswith(prefix):
+            return part.split("=", 1)[1].strip()
+    return None
+
+
+def replace_connection_value(connection_string: str, key: str, value: str) -> str:
+    parts: list[str] = []
+    replaced = False
+    for part in connection_string.split(";"):
+        if not part:
+            continue
+        part_key = part.split("=", 1)[0].strip().upper() if "=" in part else ""
+        if part_key == key.upper():
+            parts.append(f"{part.split('=', 1)[0]}={value}")
+            replaced = True
+        else:
+            parts.append(part)
+
+    if not replaced:
+        parts.append(f"{key}={value}")
+    return ";".join(parts) + ";"
 
 
 def normalize_text(value: str) -> str:
@@ -339,6 +432,69 @@ QUERY_SYNONYMS = {
     "stolem": {"table", "dining", "jadalnia", "kitchen", "pendant", "ceiling"},
     "wyspa": {"island", "kitchen", "pendant", "ceiling", "wiszaca"},
     "island": {"wyspa", "kitchen", "pendant", "ceiling", "wiszaca"},
+    "zielona": {"zielone", "zielony", "zielonego", "green"},
+    "zielone": {"zielona", "zielony", "zielonego", "green"},
+    "zielony": {"zielona", "zielone", "zielonego", "green"},
+    "zielonego": {"zielona", "zielone", "zielony", "green"},
+    "zielono": {"zielona", "zielone", "zielony", "green"},
+    "green": {"zielona", "zielone", "zielony", "zielonego"},
+    "czerwona": {"czerwone", "czerwony", "czerwonego", "red"},
+    "czerwone": {"czerwona", "czerwony", "czerwonego", "red"},
+    "czerwony": {"czerwona", "czerwone", "czerwonego", "red"},
+    "czerwono": {"czerwona", "czerwone", "czerwony", "red"},
+    "red": {"czerwona", "czerwone", "czerwony", "czerwonego"},
+    "niebieska": {"niebieskie", "niebieski", "niebieskiego", "blue"},
+    "niebieskie": {"niebieska", "niebieski", "niebieskiego", "blue"},
+    "niebieski": {"niebieska", "niebieskie", "niebieskiego", "blue"},
+    "niebiesko": {"niebieska", "niebieskie", "niebieski", "blue"},
+    "blue": {"niebieska", "niebieskie", "niebieski", "niebieskiego"},
+}
+
+COLOR_QUERY_VARIANTS = {
+    "green": {"green", "zielona", "zielone", "zielonego", "zielono", "zielony"},
+    "red": {"czerwona", "czerwone", "czerwonego", "czerwono", "czerwony", "red"},
+    "blue": {"blue", "niebieska", "niebieskie", "niebieskiego", "niebiesko", "niebieski"},
+}
+
+COLOR_CHANGING_PRODUCT_MARKERS = {
+    "adjustable light color",
+    "app color control",
+    "color control",
+    "kolorami",
+    "rgb",
+    "rgbw",
+    "sterowanie barwa",
+    "sterowanie kolorem",
+    "zmiana koloru",
+}
+
+SMART_QUERY_TERMS = {
+    "inteligentna",
+    "inteligentne",
+    "inteligentny",
+    "intelligent",
+    "smart",
+    "wifi",
+}
+
+SMART_PRODUCT_MARKERS = {
+    "inteligent",
+    "intelligent",
+    "smart",
+    "wifi",
+}
+
+COLOR_CAPABILITY_QUERY_MARKERS = {
+    "can glow",
+    "can shine",
+    "change color",
+    "color changing",
+    "ktora moze swiecic",
+    "ktore moze swiecic",
+    "moze swiecic",
+    "potrafi swiecic",
+    "zmieniac kolor",
+    "zmienia kolor",
 }
 
 
@@ -853,6 +1009,23 @@ def query_terms(query: str) -> set[str]:
     return expanded
 
 
+def literal_query_terms(query: str) -> set[str]:
+    return {
+        term
+        for term in comparable_text(query).split()
+        if len(term) > 2 and term not in STOP_WORDS
+    }
+
+
+def requested_colors(query: str) -> set[str]:
+    literal_terms = literal_query_terms(query)
+    return {
+        color
+        for color, variants in COLOR_QUERY_VARIANTS.items()
+        if literal_terms & variants
+    }
+
+
 def semantic_profile_score(terms: set[str], haystack: str) -> int:
     score = 0
     for query_markers, product_markers, boost in SEMANTIC_PRODUCT_PROFILES:
@@ -945,9 +1118,14 @@ def score_product(product: Product, query: str) -> int:
     keywords = comparable_text(" ".join(product.keywords))
     attributes = comparable_text(" ".join(f"{key} {value}" for key, value in product.attributes.items()))
     haystack = " ".join([product_id, name, category, description, tags, keywords, attributes])
+    explicit_product_text = " ".join([product_id, name, category, description, tags])
     comparable_query = comparable_text(query)
     light_preference = light_preference_for_query(query)
     terms = query_terms(query)
+    literal_terms = literal_query_terms(query)
+    colors = requested_colors(query)
+    wants_color_capability = contains_any_marker(comparable_query, COLOR_CAPABILITY_QUERY_MARKERS)
+    wants_smart_product = bool(literal_terms & SMART_QUERY_TERMS)
     wants_bathroom = bool(terms & BATHROOM_QUERY_TERMS)
     wants_over_table = "nad" in terms or "over" in terms or (
         bool(terms & {"wyspa", "island", "stolem"}) and bool(terms & OVER_TABLE_QUERY_TERMS)
@@ -959,28 +1137,61 @@ def score_product(product: Product, query: str) -> int:
     if wants_bathroom and not contains_any_marker(haystack, BATHROOM_STRONG_PRODUCT_MARKERS):
         return 0
 
+    if wants_smart_product and not contains_any_marker(explicit_product_text, SMART_PRODUCT_MARKERS):
+        return 0
+
     if not is_product_allowed_for_light_preference(product, light_preference):
         return 0
 
-    if comparable_query in product_id:
-        return 100
-    if comparable_query in name:
-        return 90
-    if comparable_query in haystack:
-        return 60
-
     score = 0
+    if comparable_query == product_id:
+        score += 300
+    elif comparable_query in product_id:
+        score += 180
+    if comparable_query in name:
+        score += 180
+    if comparable_query in tags:
+        score += 240
+    elif comparable_query in haystack:
+        score += 120
+
     for term in terms:
         if term in product_id:
             score += 35
         if term in name:
             score += 30
-        if term in category or term in tags:
+        if term in category:
             score += 22
+        if term in tags:
+            score += 34
         if term in keywords:
             score += 16
         if term in description or term in attributes:
             score += 10
+
+    for term in literal_terms:
+        if term in product_id or term in name:
+            score += 80
+        if term in tags:
+            score += 90
+        elif term in description or term in attributes:
+            score += 35
+
+    if colors:
+        product_supports_color_change = contains_any_marker(haystack, COLOR_CHANGING_PRODUCT_MARKERS)
+        product_color_matches = any(
+            contains_any_marker(tags, COLOR_QUERY_VARIANTS[color])
+            for color in colors
+        )
+        if product_color_matches:
+            if wants_color_capability and product_supports_color_change:
+                score += 320
+            elif wants_color_capability:
+                score += 30
+            elif product_supports_color_change:
+                score += 70
+            else:
+                score += 180
 
     score += semantic_profile_score(terms, haystack)
 
@@ -1018,11 +1229,16 @@ def score_product(product: Product, query: str) -> int:
 
 
 def map_sql_server_product(row: Any) -> Product:
+    tags = parse_product_tags(row.meta_pl) + parse_product_tags(row.meta_en)
+    tags = list(dict.fromkeys(tags))
     keywords = derive_product_keywords(
         str(row.id),
         str(row.name),
         str(row.category or "lamp"),
         str(row.description or ""),
+        str(row.name_en or ""),
+        str(row.description_en or ""),
+        " ".join(tags),
     )
     return Product(
         id=str(row.id),
@@ -1031,12 +1247,25 @@ def map_sql_server_product(row: Any) -> Product:
         currency=str(row.currency or "PLN"),
         category=str(row.category or "lamp"),
         description=str(row.description or ""),
-        tags=[str(row.category or "lamp")],
+        tags=tags or [str(row.category or "lamp")],
         keywords=keywords,
         stock_status=str(row.stock_status or "unknown"),
         image_url=str(row.image_url) if row.image_url else None,
         attributes={
             "category": str(row.category or "lamp"),
+            "english_name": str(row.name_en or ""),
+            "english_description": str(row.description_en or ""),
             "keywords": ", ".join(keywords[:24]),
         },
     )
+
+
+def parse_product_tags(value: Any) -> list[str]:
+    try:
+        parsed = json.loads(str(value or "[]"))
+    except (TypeError, ValueError, json.JSONDecodeError):
+        return []
+
+    if not isinstance(parsed, list):
+        return []
+    return [str(tag).strip() for tag in parsed if str(tag).strip()]
