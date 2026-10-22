@@ -448,6 +448,21 @@ QUERY_SYNONYMS = {
     "niebieski": {"niebieska", "niebieskie", "niebieskiego", "blue"},
     "niebiesko": {"niebieska", "niebieskie", "niebieski", "blue"},
     "blue": {"niebieska", "niebieskie", "niebieski", "niebieskiego"},
+    "fioletowa": {"fioletowe", "fioletowy", "purple", "violet"},
+    "fioletowe": {"fioletowa", "fioletowy", "purple", "violet"},
+    "pomaranczowa": {"orange", "pomaranczowe", "pomaranczowy"},
+    "pomaranczowe": {"orange", "pomaranczowa", "pomaranczowy"},
+    "rozowa": {"pink", "rozowe", "rozowy"},
+    "rozowe": {"pink", "rozowa", "rozowy"},
+}
+
+QUERY_PREFIX_SYNONYMS = {
+    "deszczoodporn": {"outdoor", "garden", "ogrod", "patio", "rain", "taras", "zewnetrzne"},
+    "outdoor": {"garden", "ogrod", "patio", "solar", "taras", "zewnetrzne"},
+    "waterproof": {"garden", "ogrod", "outdoor", "patio", "rain", "taras", "zewnetrzne"},
+    "wodoodporn": {"garden", "ogrod", "outdoor", "patio", "rain", "taras", "zewnetrzne"},
+    "wododporn": {"garden", "ogrod", "outdoor", "patio", "rain", "taras", "zewnetrzne"},
+    "zewnetrz": {"garden", "ogrod", "outdoor", "patio", "solar", "taras"},
 }
 
 COLOR_QUERY_VARIANTS = {
@@ -1005,6 +1020,9 @@ def query_terms(query: str) -> set[str]:
     expanded = set(terms)
     for term in terms:
         expanded.update(QUERY_SYNONYMS.get(term, set()))
+        for prefix, synonyms in QUERY_PREFIX_SYNONYMS.items():
+            if term.startswith(prefix):
+                expanded.update(synonyms)
 
     return expanded
 
@@ -1192,6 +1210,8 @@ def score_product(product: Product, query: str) -> int:
                 score += 70
             else:
                 score += 180
+        elif product_supports_color_change:
+            score += 140
 
     score += semantic_profile_score(terms, haystack)
 

@@ -12,6 +12,7 @@ from app.repositories.product_repository import (
 )
 from app.repositories.session_repository import InMemorySessionRepository
 from app.services.ai_provider import AiProvider
+from app.services.polish_language import enrich_with_polish_lemmas, polish_lemmas
 
 _random = SystemRandom()
 
@@ -100,7 +101,7 @@ class ChatService:
                 model=None,
             )
 
-        search_text = build_contextual_search_text(text, session)
+        search_text = enrich_with_polish_lemmas(build_contextual_search_text(text, session))
         light_preference = light_preference_for_query(text) or light_preference_for_query(search_text)
         matched_products: list[Product] = []
         if intent != "greeting":
@@ -176,17 +177,23 @@ def normalize_message(value: str) -> str:
 
 
 def normalize_for_matching(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", value.casefold())
+    words = value.casefold().split()
+    words.extend(polish_lemmas(value))
+    normalized = unicodedata.normalize("NFKD", " ".join(words))
     without_marks = "".join(char for char in normalized if not unicodedata.combining(char))
     without_marks = without_marks.replace("ł", "l")
-    return " ".join(without_marks.split())
+    return " ".join(dict.fromkeys(without_marks.split()))
 
 
 def detect_intent(text: str) -> str:
     normalized = normalize_for_matching(text)
     if is_greeting_message(text):
         return "greeting"
-    if contains_contextual_choice_phrase(normalized) or contains_light_preference_phrase(normalized):
+    if (
+        contains_contextual_choice_phrase(normalized)
+        or contains_light_preference_phrase(normalized)
+        or contains_product_attribute_phrase(normalized)
+    ):
         return "contextual_recommendation"
     if contains_more_recommendation_phrase(normalized):
         return "more_recommendations"
@@ -221,6 +228,7 @@ STORE_TOPIC_KEYWORDS = {
     "ciem",
     "cena",
     "czujnik",
+    "czerwon",
     "delivery",
     "dostawa",
     "gwarancja",
@@ -243,6 +251,7 @@ STORE_TOPIC_KEYWORDS = {
     "magicz",
     "moc",
     "neon",
+    "niebiesk",
     "noc",
     "order",
     "okrag",
@@ -268,12 +277,18 @@ STORE_TOPIC_KEYWORDS = {
     "sypial",
     "swiatl",
     "smart",
+    "taras",
     "tecz",
     "toilet",
     "warranty",
     "washroom",
+    "waterproof",
+    "wodoodporn",
+    "wododporn",
     "zamow",
     "zarow",
+    "zewnetrz",
+    "zielon",
     "zwrot",
     "zol",
 }
@@ -312,6 +327,57 @@ STRONG_NEW_SEARCH_PREFIXES = {
     "smart",
     "tecz",
     "wifi",
+    "wodoodporn",
+    "wododporn",
+    "zewnetrz",
+}
+
+PRODUCT_ATTRIBUTE_PREFIXES = {
+    "bambus",
+    "bezow",
+    "bezprzew",
+    "boho",
+    "braz",
+    "czarn",
+    "czerwon",
+    "deszcz",
+    "drewn",
+    "fiolet",
+    "glamour",
+    "green",
+    "industrial",
+    "klasycz",
+    "kolor",
+    "krysztal",
+    "loft",
+    "metal",
+    "minimal",
+    "niebiesk",
+    "nowoczes",
+    "outdoor",
+    "pomarancz",
+    "przenos",
+    "red",
+    "rattan",
+    "rozow",
+    "solar",
+    "srebr",
+    "szklan",
+    "waterproof",
+    "wodoodporn",
+    "wododporn",
+    "zewnetrz",
+    "zielon",
+    "zlot",
+}
+
+NEW_SEARCH_PHRASES = {
+    "a teraz",
+    "now i need",
+    "now show",
+    "teraz potrzebuje",
+    "teraz pokaz",
+    "teraz szukam",
 }
 
 LIGHT_PREFERENCE_KEYWORDS = {
@@ -464,6 +530,7 @@ def is_out_of_scope(text: str, session=None) -> bool:
         or contains_more_recommendation_phrase(normalized)
         or contains_contextual_choice_phrase(normalized)
         or contains_light_preference_phrase(normalized)
+        or contains_product_attribute_phrase(normalized)
     ):
         return False
 
@@ -495,6 +562,14 @@ def contains_light_preference_phrase(normalized: str) -> bool:
     return any(keyword in normalized for keyword in LIGHT_PREFERENCE_KEYWORDS)
 
 
+def contains_product_attribute_phrase(normalized: str) -> bool:
+    return any(
+        word.startswith(prefix)
+        for word in normalized.split()
+        for prefix in PRODUCT_ATTRIBUTE_PREFIXES
+    )
+
+
 def is_short_contextual_reply(normalized: str) -> bool:
     words = normalized.split()
     if not words or len(words) > 8:
@@ -502,6 +577,7 @@ def is_short_contextual_reply(normalized: str) -> bool:
     return (
         contains_contextual_choice_phrase(normalized)
         or contains_light_preference_phrase(normalized)
+        or contains_product_attribute_phrase(normalized)
         or any(word in {"tak", "nie", "ok", "okej", "moze", "prosze"} for word in words)
     )
 
@@ -628,7 +704,11 @@ def build_contextual_search_text(text: str, session) -> str:
 
 def starts_new_product_search(normalized: str) -> bool:
     prefixes = PRODUCT_SUBJECT_PREFIXES | STRONG_NEW_SEARCH_PREFIXES
-    return any(word.startswith(prefix) for word in normalized.split() for prefix in prefixes)
+    return any(phrase in normalized for phrase in NEW_SEARCH_PHRASES) or any(
+        word.startswith(prefix)
+        for word in normalized.split()
+        for prefix in prefixes
+    )
 
 
 def expand_user_light_preferences(normalized: str) -> str:
@@ -726,6 +806,15 @@ def detect_response_language(text: str, fallback: str) -> str:
         "swiatlo",
         "koszyk",
         "biblioteki",
+        "czerwona",
+        "czerwone",
+        "niebieska",
+        "niebieskie",
+        "potrzebuje",
+        "wodoodporna",
+        "wodoodporne",
+        "zielona",
+        "zielone",
     }
 
     if words & english_hints and not words & polish_hints:

@@ -9,6 +9,7 @@ Projekt jest przygotowany pod klucz API Grok, ale może działać bez AI. W tryb
 ```text
 widget czatu na stronie
   -> backend FastAPI
+  -> Morfeusz 2: lematyzacja polskich słów
   -> repozytorium produktów
   -> Microsoft SQL Server LocalDB
   -> Grok API albo odpowiedź zapasowa
@@ -21,6 +22,7 @@ widget czatu na stronie
 - `app/api/routes/chat.py` - endpointy API czatu.
 - `app/api/routes/products.py` - endpointy API produktów.
 - `app/services/chat_service.py` - główny przepływ rozmowy.
+- `app/services/polish_language.py` - bezpieczna integracja Morfeusz 2 i lematyzacja zapytań.
 - `app/services/ai_provider.py` - integracja Grok i odpowiedź zapasowa bez AI.
 - `app/repositories/product_repository.py` - wyszukiwanie produktów w Microsoft SQL Server albo w pamięci.
 - `database/schema.sql` - odwołanie do głównego schematu z `DataBace/02_init_schema.sql`.
@@ -75,6 +77,8 @@ python -m venv .venv
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
+
+Morfeusz 2 jest instalowany z `requirements.txt`. Bot wykorzystuje lematy razem z oryginalnym tekstem, dzięki czemu rozumie różne formy polskich słów bez utraty obsługi potocznych zapisów i literówek.
 
 Dokumentacja API po uruchomieniu:
 
