@@ -1,11 +1,15 @@
 from __future__ import annotations
 
-from fastapi import FastAPI
+import logging
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.api.dependencies import get_settings
 from app.api.routes import chat, products, system
 
+logger = logging.getLogger("lamp_store.bot")
 settings = get_settings()
 
 app = FastAPI(
@@ -27,6 +31,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.exception_handler(Exception)
+def handle_unexpected_error(request: Request, error: Exception) -> JSONResponse:
+    # Details stay in the server log: the client must not see SQL, paths or API keys.
+    logger.error("Request failed: %s %s", request.method, request.url.path, exc_info=error)
+    return JSONResponse(status_code=500, content={"detail": "Internal server error."})
+
 
 app.include_router(system.router)
 app.include_router(chat.router, prefix="/api/v1")

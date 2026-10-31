@@ -5,16 +5,21 @@ import unicodedata
 from dataclasses import dataclass
 
 from app.domain.models import ChatMessage, MessageRole, Product
-from app.repositories.product_repository import (
-    ProductRepository,
-    is_product_allowed_for_light_preference,
-    light_preference_for_query,
-)
-from app.repositories.session_repository import InMemorySessionRepository
+from app.repositories.product_repository import ProductRepository
+from app.repositories.session_repository import SessionRepository
+from app.search.ranking import is_product_allowed_for_light_preference, light_preference_for_query
 from app.services.ai_provider import AiProvider
 from app.services.polish_language import enrich_with_polish_lemmas, polish_lemmas
 
 _random = SystemRandom()
+
+
+class SessionNotFoundError(Exception):
+    pass
+
+
+class EmptyMessageError(Exception):
+    pass
 
 
 @dataclass(slots=True)
@@ -30,7 +35,7 @@ class AssistantReply:
 class ChatService:
     def __init__(
         self,
-        session_repository: InMemorySessionRepository,
+        session_repository: SessionRepository,
         product_repository: ProductRepository,
         ai_provider: AiProvider,
         default_language: str = "pl",
@@ -48,7 +53,7 @@ class ChatService:
     def get_session(self, session_id: str):
         session = self._session_repository.get_session(session_id)
         if session is None:
-            raise KeyError(f"Session {session_id} was not found.")
+            raise SessionNotFoundError(session_id)
         return session
 
     def process_message(
@@ -61,7 +66,7 @@ class ChatService:
     ):
         clean_text = normalize_message(text)
         if not clean_text:
-            raise ValueError("Message text must not be empty.")
+            raise EmptyMessageError()
 
         session = self.get_session(session_id) if session_id else self.create_session(language=language, user_id=user_id)
         effective_language = detect_response_language(clean_text, language or session.language or self._default_language)
@@ -71,7 +76,7 @@ class ChatService:
             text=clean_text,
             metadata=metadata or {},
         )
-        self._session_repository.add_message(session.id, user_message)
+        self._session_repository.add_message(session, user_message)
 
         reply = self._build_reply(clean_text, effective_language, session)
         assistant_message = ChatMessage(
@@ -85,8 +90,8 @@ class ChatService:
                 "action": reply.action,
             },
         )
-        session = self._session_repository.add_message(session.id, assistant_message)
-        session.language = effective_language
+        self._session_repository.add_message(session, assistant_message)
+        self._session_repository.update_language(session, effective_language)
         return session, assistant_message, reply.matched_products
 
     def _build_reply(self, text: str, language: str, session) -> AssistantReply:

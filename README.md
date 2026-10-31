@@ -24,8 +24,13 @@ widget czatu na stronie
 - `app/services/chat_service.py` - główny przepływ rozmowy.
 - `app/services/polish_language.py` - bezpieczna integracja Morfeusz 2 i lematyzacja zapytań.
 - `app/services/ai_provider.py` - integracja Grok i odpowiedź zapasowa bez AI.
-- `app/repositories/product_repository.py` - wyszukiwanie produktów w Microsoft SQL Server albo w pamięci.
-- `database/schema.sql` - odwołanie do głównego schematu z `DataBace/02_init_schema.sql`.
+- `app/repositories/product_repository.py` - katalog produktów z Microsoft SQL Server (z pamięcią podręczną) albo z danych demonstracyjnych.
+- `app/repositories/session_repository.py` - historia rozmów w tabelach `chat_sessions` i `chat_messages`.
+- `app/core/database.py` - pula połączeń z bazą.
+- `app/search/ranking.py` - punktacja produktów. Opis wag i wyniki pomiarów: `docs/ranking.md`.
+- `app/search/vocabulary.py` - słownictwo wyszukiwania.
+- `app/search/evaluate.py` - pomiar jakości rankingu na zapytaniach testowych.
+- `database/schema.sql` - odwołanie do skryptów z `DataBace`.
 
 ## Baza danych
 
@@ -41,11 +46,14 @@ Domyślne połączenie:
 SQL_SERVER_CONNECTION_STRING=DRIVER={ODBC Driver 18 for SQL Server};SERVER=(localdb)\MSSQLLocalDB;DATABASE=DiplomaStore;Trusted_Connection=yes;TrustServerCertificate=yes;
 ```
 
-Główny schemat znajduje się w:
+Główny schemat i katalog znajdują się w:
 
 ```text
 DataBace/02_init_schema.sql
+DataBace/03_seed_products.sql
 ```
+
+W trybie `PRODUCT_DB_MODE=mssql` rozmowy są zapisywane w bazie, więc restart bota ich nie usuwa. Tryb `memory` używa danych demonstracyjnych z `app/data/sample_products.py` i przechowuje rozmowy tylko w pamięci.
 
 ## Środowisko
 
@@ -79,6 +87,12 @@ uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
 
 Morfeusz 2 jest instalowany z `requirements.txt`. Bot wykorzystuje lematy razem z oryginalnym tekstem, dzięki czemu rozumie różne formy polskich słów bez utraty obsługi potocznych zapisów i literówek.
+
+Testy (część z nich tworzy i usuwa tymczasową bazę `DiplomaStoreBotTest`):
+
+```powershell
+python -m pytest tests
+```
 
 Dokumentacja API po uruchomieniu:
 

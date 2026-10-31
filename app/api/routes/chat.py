@@ -13,6 +13,7 @@ from app.api.schemas import (
     SendMessageRequest,
     SendMessageResponse,
 )
+from app.services.chat_service import EmptyMessageError, SessionNotFoundError
 
 router = APIRouter(prefix="/chat", tags=["chat"])
 
@@ -49,8 +50,8 @@ def get_session(session_id: str) -> ChatSessionResponse:
     service = get_chat_service()
     try:
         session = service.get_session(session_id)
-    except KeyError as error:
-        raise HTTPException(status_code=404, detail=str(error)) from error
+    except SessionNotFoundError as error:
+        raise HTTPException(status_code=404, detail="Session not found.") from error
     return _serialize_session(session)
 
 
@@ -65,10 +66,10 @@ def send_message(payload: SendMessageRequest) -> SendMessageResponse:
             user_id=payload.user_id,
             metadata=payload.metadata,
         )
-    except ValueError as error:
-        raise HTTPException(status_code=400, detail=str(error)) from error
-    except KeyError as error:
-        raise HTTPException(status_code=404, detail=str(error)) from error
+    except EmptyMessageError as error:
+        raise HTTPException(status_code=400, detail="Message text must not be empty.") from error
+    except SessionNotFoundError as error:
+        raise HTTPException(status_code=404, detail="Session not found.") from error
 
     return SendMessageResponse(
         session=_serialize_session(session),

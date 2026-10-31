@@ -3,8 +3,9 @@ from __future__ import annotations
 from functools import lru_cache
 
 from app.core.config import Settings, load_settings
+from app.core.database import SqlServerConnectionPool
 from app.repositories.product_repository import build_product_repository
-from app.repositories.session_repository import InMemorySessionRepository
+from app.repositories.session_repository import build_session_repository
 from app.services.ai_provider import build_ai_provider
 from app.services.chat_service import ChatService
 
@@ -15,13 +16,18 @@ def get_settings() -> Settings:
 
 
 @lru_cache
+def get_connection_pool() -> SqlServerConnectionPool:
+    return SqlServerConnectionPool(get_settings().sql_server_connection_string)
+
+
+@lru_cache
 def get_product_repository():
-    return build_product_repository(get_settings())
+    return build_product_repository(get_settings(), get_connection_pool())
 
 
 @lru_cache
 def get_session_repository():
-    return InMemorySessionRepository()
+    return build_session_repository(get_settings(), get_connection_pool())
 
 
 @lru_cache

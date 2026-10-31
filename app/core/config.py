@@ -14,6 +14,7 @@ class Settings:
     port: int = 8000
     product_db_mode: str = "memory"
     sql_server_connection_string: str = ""
+    catalog_cache_seconds: float = 300.0
     default_language: str = "pl"
     allowed_origins: tuple[str, ...] = ("*",)
     allowed_origin_regex: str | None = None
@@ -62,6 +63,7 @@ def load_settings() -> Settings:
         port=int(os.getenv("PORT", "8000")),
         product_db_mode=os.getenv("PRODUCT_DB_MODE", "memory").strip().lower(),
         sql_server_connection_string=os.getenv("SQL_SERVER_CONNECTION_STRING", "").strip(),
+        catalog_cache_seconds=float(os.getenv("CATALOG_CACHE_SECONDS", "300")),
         default_language=os.getenv("DEFAULT_LANGUAGE", "pl").strip().lower(),
         allowed_origins=_parse_origins(os.getenv("ALLOWED_ORIGINS")),
         allowed_origin_regex=os.getenv("ALLOWED_ORIGIN_REGEX", "").strip() or None,
