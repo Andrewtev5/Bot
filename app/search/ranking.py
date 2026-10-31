@@ -392,6 +392,26 @@ def score_product(product: Product, query: str, weights: RankingWeights = DEFAUL
     )
 
 
+def relevant_products(
+    products: list[Product],
+    query: str,
+    min_share_of_best: float = 0.5,
+    weights: RankingWeights = DEFAULT_WEIGHTS,
+) -> list[Product]:
+    """Products that really fit the query, best first: for price filters, where position in the list does not matter."""
+    normalized = normalize_text(query)
+    scored = [(score_product(product, normalized, weights), product) for product in products]
+    best = max((score for score, _ in scored), default=0)
+    if best <= 0:
+        return []
+
+    return [
+        product
+        for score, product in sorted(scored, key=lambda item: item[0], reverse=True)
+        if score >= best * min_share_of_best
+    ]
+
+
 def rank_products(
     products: list[Product],
     query: str,
