@@ -1,0 +1,18 @@
+[
+  {"query": "coś przytulnego do sypialni", "relevant": "bedside|night|underbed|salt"},
+  {"query": "coś do czytania wieczorem", "relevant": "reading|bedside|banker|architect"},
+  {"query": "światło do pracy przy komputerze", "relevant": "desk|monitor|architect"},
+  {"query": "prezent dla dziecka", "relevant": "kids|cloud|galaxy|projector|night"},
+  {"query": "coś na balkon", "relevant": "solar|outdoor|garden|patio|lantern"},
+  {"query": "oświetlenie nad stołem", "relevant": "pendant|chandelier|linear"},
+  {"query": "lampa, która zmienia kolory", "relevant": "rgb|smart|neon|galaxy|sunset|aura|sand"},
+  {"query": "coś w naturalnym stylu", "relevant": "rattan|bamboo|wood|jute|seagrass|woven|macrame|salt|stone"},
+  {"query": "coś eleganckiego i błyszczącego", "relevant": "crystal|brass|gold|chandelier"},
+  {"query": "coś na kemping", "relevant": "portable|lantern|rechargeable"},
+  {"query": "lampa bez kabla", "relevant": "rechargeable|portable|wireless|solar|lantern"},
+  {"query": "coś do pokoju gracza", "relevant": "rgb|gaming|neon|lightbar"},
+  {"query": "coś do klasycznego gabinetu", "relevant": "banker|brass|vintage|desk"},
+  {"query": "oświetlenie pod szafki w kuchni", "relevant": "under-cabinet|strip"},
+  {"query": "żeby było jasno w przedpokoju", "relevant": "sconce|wall|ceiling|flushmount|track"},
+  {"query": "coś do sterowania z telefonu", "relevant": "smart|wifi"}
+]

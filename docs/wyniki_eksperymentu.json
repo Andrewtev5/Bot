@@ -1,0 +1,7963 @@
+{
+ "products": 170,
+ "morfeusz": true,
+ "sets": {
+  "podstawowy": 54,
+  "fleksyjny": 23,
+  "nieprecyzyjny": 16
+ },
+ "metrics": {
+  "podstawowy": {
+   "Kolejność z katalogu": {
+    "precision": 0.0888888888888889,
+    "mrr": 0.18117283950617283,
+    "ndcg": 0.09552275533709793,
+    "hit_rate": 0.3333333333333333
+   },
+   "BM25 bez lematyzacji": {
+    "precision": 0.6481481481481481,
+    "mrr": 0.8425925925925926,
+    "ndcg": 0.7395496011533337,
+    "hit_rate": 0.8888888888888888
+   },
+   "BM25 z lematyzacją": {
+    "precision": 0.6592592592592593,
+    "mrr": 0.8888888888888888,
+    "ndcg": 0.7632326091985915,
+    "hit_rate": 0.9259259259259259
+   },
+   "Reguły bez lematyzacji": {
+    "precision": 0.7185185185185184,
+    "mrr": 0.9537037037037037,
+    "ndcg": 0.8219816185707735,
+    "hit_rate": 0.9629629629629629
+   },
+   "Reguły, wagi równe": {
+    "precision": 0.7222222222222222,
+    "mrr": 0.9459876543209877,
+    "ndcg": 0.8248105274163108,
+    "hit_rate": 0.9814814814814815
+   },
+   "Reguły, skala wag (pełny)": {
+    "precision": 0.7333333333333334,
+    "mrr": 0.9475308641975309,
+    "ndcg": 0.8348535806759035,
+    "hit_rate": 0.9814814814814815
+   }
+  },
+  "fleksyjny": {
+   "Kolejność z katalogu": {
+    "precision": 0.08695652173913043,
+    "mrr": 0.17753623188405795,
+    "ndcg": 0.09889437362544633,
+    "hit_rate": 0.30434782608695654
+   },
+   "BM25 bez lematyzacji": {
+    "precision": 0.25217391304347825,
+    "mrr": 0.39855072463768115,
+    "ndcg": 0.27531867695227435,
+    "hit_rate": 0.5217391304347826
+   },
+   "BM25 z lematyzacją": {
+    "precision": 0.5304347826086957,
+    "mrr": 0.7913043478260869,
+    "ndcg": 0.6158820848838303,
+    "hit_rate": 0.9565217391304348
+   },
+   "Reguły bez lematyzacji": {
+    "precision": 0.34782608695652173,
+    "mrr": 0.4978260869565217,
+    "ndcg": 0.3916065992889333,
+    "hit_rate": 0.6086956521739131
+   },
+   "Reguły, wagi równe": {
+    "precision": 0.5391304347826087,
+    "mrr": 0.7717391304347826,
+    "ndcg": 0.6168990511440374,
+    "hit_rate": 0.9130434782608695
+   },
+   "Reguły, skala wag (pełny)": {
+    "precision": 0.5391304347826087,
+    "mrr": 0.8130434782608695,
+    "ndcg": 0.6320342223094201,
+    "hit_rate": 0.8695652173913043
+   }
+  },
+  "nieprecyzyjny": {
+   "Kolejność z katalogu": {
+    "precision": 0.0625,
+    "mrr": 0.121875,
+    "ndcg": 0.06249999999999999,
+    "hit_rate": 0.25
+   },
+   "BM25 bez lematyzacji": {
+    "precision": 0.3,
+    "mrr": 0.6458333333333334,
+    "ndcg": 0.36722591083808803,
+    "hit_rate": 0.75
+   },
+   "BM25 z lematyzacją": {
+    "precision": 0.4625,
+    "mrr": 0.875,
+    "ndcg": 0.5502299331453219,
+    "hit_rate": 0.9375
+   },
+   "Reguły bez lematyzacji": {
+    "precision": 0.275,
+    "mrr": 0.6583333333333333,
+    "ndcg": 0.3612978792678242,
+    "hit_rate": 0.75
+   },
+   "Reguły, wagi równe": {
+    "precision": 0.5125,
+    "mrr": 0.875,
+    "ndcg": 0.6022944454514562,
+    "hit_rate": 0.9375
+   },
+   "Reguły, skala wag (pełny)": {
+    "precision": 0.5,
+    "mrr": 0.796875,
+    "ndcg": 0.576475116880288,
+    "hit_rate": 0.875
+   }
+  }
+ },
+ "queries": {
+  "podstawowy": {
+   "Kolejność z katalogu": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.24630238874073,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.4367467095119258,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "neon",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.13120507751234178,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    }
+   ],
+   "BM25 bez lematyzacji": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "minimalist-black-floor-reading",
+      "boho-rattan-floor-lantern",
+      "brass-spindle-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "brass-architect-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "amber-glass-bedside-globe",
+      "ceramic-bedside-lamp",
+      "crystal-bedside-touch-lamp",
+      "boho-macrame-table-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "modern-linear-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "industrial-pulley-desk-lamp",
+      "minimalist-linear-desk-light",
+      "minimalist-brass-desk-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "industrial-caged-wall-sconce",
+      "boho-bamboo-wall-sconce",
+      "minimalist-wall-sconce",
+      "vintage-brass-banker-spot",
+      "amber-glass-wall-sconce"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "smoky-glass-pendant-globe",
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant",
+      "smoke-glass-pendant-cluster",
+      "industrial-pulley-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "feather-pendant-cloud-chandelier",
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "smart-ceiling-flushmount",
+      "feather-shade-pendant",
+      "led-ring-pendant-light",
+      "cloud-pendant-light-shade",
+      "black-track-spotlight"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "industrial-tripod-floor-search",
+      "magnetic-track-spot-light",
+      "black-track-spotlight",
+      "industrial-tripod-searchlight",
+      "industrial-spotlight-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "arc-floor-lamp",
+      "brass-reading-lamp",
+      "feather-shade-pendant",
+      "brass-spindle-floor-lamp",
+      "led-under-monitor-lightbar"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "white-ceramic-pleated-pendant",
+      "ceramic-bedside-lamp",
+      "minimalist-linear-desk-light",
+      "under-cabinet-led-strip",
+      "led-ring-pendant-light"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "crystal-linear-pendant-bar",
+      "boho-woven-rattan-pendant",
+      "amber-glass-multi-pendant",
+      "led-ring-pendant-light",
+      "smoked-glass-multi-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant",
+      "minimalist-black-pendant-bar",
+      "marble-brass-linear-pendant",
+      "industrial-baker-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "feather-pendant-cloud-chandelier",
+      "feather-shade-pendant",
+      "boho-fringe-pendant-chandelier",
+      "sunset-projection-lamp",
+      "crystal-flushmount-ceiling-light"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "arc-floor-lamp",
+      "amber-glass-arc-floor-lamp",
+      "smoky-glass-chandelier-ring",
+      "brass-spindle-floor-lamp",
+      "scandi-tripod-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "black-gooseneck-spotlight",
+      "matte-black-bedside-spot",
+      "brass-arc-wall-lamp",
+      "touch-dimmer-bedside-bar",
+      "rechargeable-magnetic-reading-bar"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.4912596920895758,
+     "hit": true
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "minimal-table-lamp",
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "modern-linear-desk-lamp",
+      "brass-architect-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.4912596920895758,
+     "hit": true
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "boho-woven-rattan-wall-sconce",
+      "boho-fringe-table-lamp",
+      "boho-macrame-pendant-light",
+      "boho-woven-paper-pendant",
+      "boho-fringe-pendant-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "boho-rattan-floor-lantern",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-pendant",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "boho-woven-bamboo-floor-lamp",
+      "bamboo-pendant-light",
+      "boho-woven-bamboo-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-tripod-floor-search",
+      "industrial-pulley-pendant",
+      "industrial-gear-table-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "industrial-cage-lamp",
+      "wire-mesh-pendant-lamp",
+      "smoky-glass-pendant-globe",
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "crystal-pendant-single-drop",
+      "crystal-linear-pendant-bar",
+      "crystal-globe-pendant-bar",
+      "crystal-globe-lamp",
+      "crystal-bedside-touch-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "marble-brass-linear-pendant",
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "amber-glass-mushroom-lamp",
+      "mushroom-glass-bedside-lamp",
+      "led-lamp-10w",
+      "amber-glass-bedside-globe",
+      "amber-glass-multi-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6164336326286644,
+     "hit": true
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "vintage-bankers-lamp",
+      "brass-reading-lamp",
+      "art-deco-brass-globe",
+      "brass-architect-floor-lamp",
+      "smoky-glass-chandelier-ring"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.5296347172140421,
+     "hit": true
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "concrete-cube-pendant",
+      "concrete-base-table-lamp",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7653606369886217,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "wooden-cube-bedside-lamp",
+      "japanese-tatami-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "industrial-spot-pendant-bar",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "ceramic-bedside-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "white-ceramic-pleated-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "vintage-brass-banker-spot",
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp",
+      "smoked-glass-dome-lamp",
+      "industrial-tripod-searchlight"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "smart-rgbw-led-bulb-e27",
+      "smart-rgb-desk-ambient-ring",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "rgb-gaming-corner-lamp",
+      "smart-ceiling-flushmount",
+      "smart-rgb-underbed-light-kit",
+      "smart-rgb-led-lightbar-pair"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "sunset-aura-desk-globe",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp",
+      "retro-orange-space-age-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "opal-pendant-lamp",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "portable-lantern-lamp",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "neon",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-garden-lantern",
+      "solar-hanging-mason-jar-light",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "portable-lantern-lamp",
+      "rechargeable-touch-lantern",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-garden-lantern",
+      "solar-outdoor-wall-lantern",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "portable-lantern-lamp",
+      "rechargeable-touch-lantern",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "kids-cloud-night-lamp",
+      "architect-clamp-desk-lamp",
+      "rechargeable-bar-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.5307212739772434,
+     "hit": true
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant",
+      "industrial-desk-lamp-clock",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "industrial-desk-lamp-clock",
+      "industrial-tripod-searchlight",
+      "wire-mesh-pendant-lamp",
+      "industrial-spot-pendant-bar",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant",
+      "industrial-desk-lamp-clock",
+      "amber-glass-bottle-lamp",
+      "industrial-pulley-desk-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "boho-woven-bamboo-floor-lamp",
+      "brass-banker-floor-lamp",
+      "amber-glass-arc-floor-lamp",
+      "industrial-mesh-floor-lamp",
+      "minimalist-black-floor-reading"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "modern-linear-desk-lamp",
+      "minimalist-black-desk-arch",
+      "minimalist-brass-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "touch-dimmer-bedside-bar",
+      "crystal-bedside-touch-lamp",
+      "amber-glass-bedside-globe",
+      "wooden-cube-bedside-lamp",
+      "ceramic-bedside-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "minimalist-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "minimalist-stick-wall-sconce",
+      "amber-glass-wall-sconce",
+      "smoked-glass-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "vintage-amber-pendant",
+      "paper-origami-pendant",
+      "opal-pendant-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "marble-brass-linear-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "crystal-wall-sconce-pair",
+      "led-ring-pendant-light",
+      "smart-ceiling-flushmount",
+      "solar-hanging-mason-jar-light",
+      "boho-macrame-pendant-light"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "feather-pendant-cloud-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "smart-corner-floor-lightbar",
+      "smart-ceiling-flushmount",
+      "smart-rgb-underbed-light-kit",
+      "smart-flexible-led-neon-strip"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "smart-rgb-underbed-light-kit",
+      "amber-glass-bedside-globe"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7039180890341347,
+     "hit": true
+    }
+   ],
+   "BM25 z lematyzacją": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "brass-banker-floor-lamp",
+      "industrial-tripod-floor-search",
+      "industrial-spotlight-floor-lamp",
+      "minimalist-black-floor-reading",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "kids-cloud-night-lamp",
+      "ceramic-bedside-lamp",
+      "wireless-mushroom-lamp",
+      "wooden-cube-bedside-lamp",
+      "amber-glass-bedside-globe"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "minimalist-black-desk-arch",
+      "smoked-glass-table-cylinder",
+      "industrial-tripod-desk-spot",
+      "amber-glass-desk-cylinder",
+      "modern-linear-desk-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "industrial-caged-wall-sconce",
+      "boho-bamboo-wall-sconce",
+      "minimalist-wall-sconce",
+      "vintage-brass-banker-spot",
+      "amber-glass-wall-sconce"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "led-ring-pendant-light",
+      "vintage-brass-banker-pendant",
+      "boho-woven-seagrass-pendant",
+      "copper-pendant-dome",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "feather-pendant-cloud-chandelier",
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "smart-ceiling-flushmount",
+      "cloud-pendant-light-shade",
+      "smoky-glass-chandelier",
+      "crystal-flushmount-ceiling-light",
+      "feather-shade-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "industrial-tripod-floor-search",
+      "magnetic-track-spot-light",
+      "black-track-spotlight",
+      "industrial-tripod-searchlight",
+      "industrial-spotlight-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "arc-floor-lamp",
+      "brass-reading-lamp",
+      "feather-shade-pendant",
+      "brass-spindle-floor-lamp",
+      "led-under-monitor-lightbar"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "white-ceramic-pleated-pendant",
+      "ceramic-bedside-lamp",
+      "minimalist-linear-desk-light",
+      "under-cabinet-led-strip",
+      "feather-shade-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "opal-pendant-lamp",
+      "crystal-linear-pendant-bar",
+      "amber-glass-multi-pendant",
+      "led-ring-pendant-light"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant",
+      "crystal-pendant-single-drop",
+      "marble-brass-linear-pendant",
+      "minimalist-black-pendant-bar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "ceramic-bedside-lamp",
+      "feather-table-globe-lamp",
+      "boho-macrame-pendant-light",
+      "vintage-pleated-shade-wall-sconce",
+      "feather-pendant-cloud-chandelier"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "amber-glass-arc-floor-lamp",
+      "arc-floor-lamp",
+      "brass-arc-wall-lamp",
+      "minimalist-arch-floor-lamp",
+      "smoked-glass-dome-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "black-gooseneck-spotlight",
+      "matte-black-bedside-spot",
+      "flexible-clip-on-lamp",
+      "brass-arc-wall-lamp",
+      "touch-dimmer-bedside-bar"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.34519134224686937,
+     "hit": true
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "minimal-table-lamp",
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "industrial-pulley-desk-lamp",
+      "minimalist-brass-desk-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.4912596920895758,
+     "hit": true
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "boho-woven-rattan-wall-sconce",
+      "boho-fringe-table-lamp",
+      "boho-macrame-pendant-light",
+      "boho-woven-paper-pendant",
+      "boho-fringe-pendant-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "boho-woven-rattan-wall-sconce",
+      "boho-rattan-floor-lantern",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "boho-bamboo-wall-sconce",
+      "boho-woven-bamboo-floor-lamp",
+      "bamboo-pendant-light",
+      "boho-woven-bamboo-pendant",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-tripod-floor-search",
+      "industrial-pulley-pendant",
+      "industrial-gear-table-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "industrial-cage-lamp",
+      "wire-mesh-pendant-lamp",
+      "led-ring-pendant-light",
+      "vintage-brass-banker-pendant",
+      "boho-woven-seagrass-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "crystal-drop-wall-sconce",
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-pendant-single-drop"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "marble-brass-linear-pendant",
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "amber-glass-mushroom-lamp",
+      "mushroom-glass-bedside-lamp",
+      "vintage-brass-banker-spot",
+      "amber-glass-desk-cylinder",
+      "led-lamp-10w"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "brass-spindle-floor-lamp",
+      "modern-brass-candelabra",
+      "modern-gold-ring-wall-sconce",
+      "amber-glass-desk-cylinder",
+      "smoked-glass-wall-sconce"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "concrete-wall-sconce-updown",
+      "concrete-cube-pendant",
+      "concrete-base-table-lamp",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "wooden-cube-bedside-lamp",
+      "industrial-tripod-floor-search",
+      "scandi-wood-wall-sconce",
+      "japanese-tatami-floor-lamp",
+      "amber-glass-multi-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7039180890341347,
+     "hit": true
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "ceramic-bedside-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "white-ceramic-pleated-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "vintage-brass-banker-spot",
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp",
+      "smoked-glass-dome-lamp",
+      "industrial-tripod-searchlight"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgbw-led-bulb-e27",
+      "smart-ceiling-flushmount",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "rgb-gaming-corner-lamp",
+      "smart-ceiling-flushmount",
+      "smart-rgb-underbed-light-kit",
+      "smart-rgb-led-lightbar-pair"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "sunset-aura-desk-globe",
+      "copper-wire-string-globe",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "opal-pendant-lamp",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "portable-lantern-lamp",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "neon",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-garden-lantern",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "portable-lantern-lamp",
+      "rechargeable-touch-lantern",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "solar-outdoor-post-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "solar-hanging-mason-jar-light",
+      "solar-outdoor-post-lamp",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-garden-lantern",
+      "solar-outdoor-wall-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "wireless-mushroom-lamp",
+      "portable-lantern-lamp",
+      "rechargeable-touch-lantern",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "kids-cloud-night-lamp",
+      "architect-clamp-desk-lamp",
+      "rechargeable-bar-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.5307212739772434,
+     "hit": true
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant",
+      "industrial-desk-lamp-clock",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "japanese-noguchi-style-pendant",
+      "pleated-paper-lantern-lamp",
+      "wire-mesh-pendant-lamp",
+      "amber-glass-bottle-lamp",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant",
+      "industrial-desk-lamp-clock",
+      "amber-glass-bottle-lamp",
+      "industrial-pulley-desk-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "boho-woven-bamboo-floor-lamp",
+      "amber-glass-arc-floor-lamp",
+      "brass-banker-floor-lamp",
+      "minimalist-black-floor-reading",
+      "industrial-mesh-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "modern-linear-desk-lamp",
+      "minimalist-black-desk-arch",
+      "industrial-desk-lamp-clock",
+      "magnifying-led-desk-lamp",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "touch-dimmer-bedside-bar",
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "amber-glass-bottle-lamp",
+      "rechargeable-magnetic-reading-bar"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "minimalist-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "minimalist-stick-wall-sconce",
+      "amber-glass-wall-sconce",
+      "smoked-glass-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "vintage-amber-pendant",
+      "paper-origami-pendant",
+      "opal-pendant-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "marble-brass-linear-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "crystal-wall-sconce-pair",
+      "led-ring-pendant-light",
+      "smart-ceiling-flushmount",
+      "solar-hanging-mason-jar-light",
+      "boho-macrame-pendant-light"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "feather-pendant-cloud-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar",
+      "smart-rgb-underbed-light-kit",
+      "smart-flexible-led-neon-strip"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "smart-rgb-underbed-light-kit",
+      "amber-glass-bedside-globe"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7039180890341347,
+     "hit": true
+    }
+   ],
+   "Reguły bez lematyzacji": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "arc-floor-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "industrial-mesh-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "japanese-tatami-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "ceramic-bedside-lamp",
+      "amber-glass-bedside-globe",
+      "wooden-cube-bedside-lamp",
+      "boho-macrame-table-lamp",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "minimalist-wall-sconce",
+      "amber-glass-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "minimalist-black-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "paper-origami-pendant",
+      "smoke-glass-pendant-cluster"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "modern-brass-candelabra",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "feather-shade-pendant",
+      "smart-ceiling-flushmount",
+      "smoky-glass-pendant-globe",
+      "led-ring-pendant-light",
+      "crystal-globe-pendant-bar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "black-track-spotlight",
+      "industrial-spotlight-floor-lamp",
+      "industrial-tripod-searchlight",
+      "industrial-spot-pendant-bar",
+      "industrial-tripod-desk-spot"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "neon-sign-heart-lamp",
+      "industrial-caged-wall-sconce",
+      "boho-woven-paper-pendant",
+      "concrete-cube-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "smart-ceiling-flushmount",
+      "vintage-pleated-shade-wall-sconce",
+      "boho-woven-paper-pendant",
+      "concrete-cube-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "vintage-amber-pendant",
+      "opal-pendant-lamp",
+      "boho-woven-rattan-pendant",
+      "industrial-caged-pendant-bar",
+      "smoky-glass-pendant-globe"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "minimalist-linear-pendant",
+      "opal-pendant-lamp",
+      "minimalist-black-pendant-bar",
+      "industrial-baker-pendant",
+      "vintage-amber-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "boho-fringe-table-lamp",
+      "ceramic-bedside-lamp",
+      "boho-macrame-pendant-light",
+      "amber-glass-bedside-globe",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.36005461457723403,
+     "hit": true
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "amber-glass-arc-floor-lamp",
+      "arc-floor-lamp",
+      "scandi-tripod-floor-lamp",
+      "nordic-glass-lamp",
+      "kinetic-magnetic-balance-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "rechargeable-magnetic-reading-bar",
+      "flexible-clip-on-lamp",
+      "touch-dimmer-bedside-bar",
+      "black-gooseneck-spotlight",
+      "matte-black-bedside-spot"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.639945385422766,
+     "hit": true
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "led-under-monitor-lightbar",
+      "kinetic-magnetic-balance-lamp",
+      "boho-macrame-pendant-light",
+      "vintage-amber-pendant",
+      "marble-brass-table-cylinder"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-bamboo-pendant",
+      "boho-macrame-pendant-light",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "solar-rattan-patio-lamp",
+      "rattan-table-lamp",
+      "boho-rattan-floor-lantern",
+      "boho-woven-rattan-pendant",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "boho-woven-bamboo-pendant",
+      "bamboo-pendant-light",
+      "boho-woven-bamboo-floor-lamp",
+      "wire-mesh-pendant-lamp",
+      "ceramic-wabi-sabi-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-pulley-pendant",
+      "industrial-desk-lamp-clock",
+      "industrial-mesh-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "industrial-pulley-pendant",
+      "industrial-cage-lamp",
+      "geometric-metal-pendant",
+      "wire-mesh-pendant-lamp",
+      "industrial-caged-pendant-bar"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "crystal-linear-pendant-bar",
+      "crystal-pendant-single-drop",
+      "crystal-globe-pendant-bar",
+      "crystal-globe-lamp",
+      "crystal-flushmount-ceiling-light"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7653606369886217,
+     "hit": true
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "amber-glass-mushroom-lamp",
+      "amber-glass-bottle-lamp",
+      "amber-glass-pendant-cluster",
+      "amber-glass-wall-sconce",
+      "led-lamp-10w"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "brass-reading-lamp",
+      "brass-architect-floor-lamp",
+      "brass-spindle-floor-lamp",
+      "art-deco-brass-globe",
+      "crystal-linear-pendant-bar"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "concrete-base-table-lamp",
+      "concrete-cube-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7653606369886217,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "wooden-cube-bedside-lamp",
+      "japanese-tatami-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "industrial-spot-pendant-bar",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "ceramic-wabi-sabi-pendant",
+      "ceramic-bedside-lamp",
+      "white-ceramic-pleated-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp",
+      "vintage-bankers-lamp",
+      "vintage-brass-banker-pendant",
+      "stained-glass-tiffany-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgbw-led-bulb-e27",
+      "smart-rgb-desk-ambient-ring",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-rgb-led-lightbar-pair",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "sunset-aura-desk-globe",
+      "sunset-projection-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "rgb-gaming-corner-lamp",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "rgb-gaming-corner-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "neon",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "modern-brass-candelabra",
+      "crystal-table-globe-lamp",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.8772153153380493,
+     "hit": true
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "solar-hanging-mason-jar-light",
+      "solar-outdoor-post-lamp",
+      "solar-rattan-patio-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-garden-lantern",
+      "portable-lantern-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "solar-outdoor-wall-lantern",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "portable-lantern-lamp",
+      "solar-rattan-patio-lamp",
+      "modern-linear-desk-lamp",
+      "retro-mushroom-table-bar",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "woven-seagrass-table-lamp",
+      "rattan-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7039180890341347,
+     "hit": true
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "retro-mushroom-table-bar",
+      "vintage-kerosene-style-lamp",
+      "industrial-pipe-desk-lamp",
+      "portable-lantern-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "arc-floor-lamp",
+      "brass-architect-floor-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "brass-banker-floor-lamp",
+      "industrial-mesh-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp",
+      "minimalist-brass-desk-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "crystal-bedside-touch-lamp",
+      "mushroom-glass-bedside-lamp",
+      "boho-fringe-table-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "minimalist-wall-sconce",
+      "gold-leaf-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "boho-bamboo-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "cloud-pendant-light-shade",
+      "led-ring-pendant-light",
+      "boho-macrame-pendant-light",
+      "bamboo-pendant-light",
+      "smoked-glass-multi-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "crystal-wall-sconce-pair",
+      "industrial-pulley-wall-lamp",
+      "scandi-wood-wall-sconce",
+      "concrete-wall-sconce-updown"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "crystal-cascade-pendant",
+      "crystal-ring-pendant-chandelier",
+      "crystal-linear-pendant-bar",
+      "crystal-drop-wall-sconce",
+      "crystal-table-globe-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "solar-hanging-mason-jar-light",
+      "solar-outdoor-post-lamp",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-wall-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar",
+      "smart-wifi-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "kids-cloud-night-lamp",
+      "amber-glass-bedside-globe",
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "smart-rgb-underbed-light-kit"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    }
+   ],
+   "Reguły, wagi równe": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "brass-banker-floor-lamp",
+      "boho-rattan-floor-lantern",
+      "arc-floor-lamp",
+      "brass-architect-floor-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "ceramic-bedside-lamp",
+      "amber-glass-bedside-globe",
+      "wireless-mushroom-lamp",
+      "wooden-cube-bedside-lamp",
+      "boho-macrame-table-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "minimalist-black-desk-arch",
+      "magnifying-led-desk-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "minimalist-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "amber-glass-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "boho-bamboo-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "paper-origami-pendant",
+      "smoky-glass-pendant-globe"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "feather-pendant-cloud-chandelier",
+      "crystal-cascade-pendant",
+      "modern-brass-candelabra"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "cloud-pendant-light-shade",
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "black-track-spotlight",
+      "industrial-spot-pendant-bar",
+      "industrial-tripod-searchlight",
+      "industrial-tripod-desk-spot",
+      "industrial-spotlight-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "smart-ceiling-flushmount",
+      "concrete-cube-pendant",
+      "boho-woven-paper-pendant",
+      "industrial-pulley-wall-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "smart-ceiling-flushmount",
+      "vintage-pleated-shade-wall-sconce",
+      "crystal-flushmount-ceiling-light",
+      "concrete-cube-pendant",
+      "boho-woven-paper-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "opal-pendant-lamp",
+      "boho-woven-rattan-pendant",
+      "vintage-amber-pendant",
+      "smoky-glass-pendant-globe",
+      "industrial-caged-pendant-bar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant",
+      "minimalist-black-pendant-bar",
+      "industrial-baker-pendant",
+      "vintage-amber-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "ceramic-bedside-lamp",
+      "amber-glass-bedside-globe",
+      "boho-fringe-table-lamp",
+      "boho-macrame-pendant-light",
+      "amber-glass-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "arc-floor-lamp",
+      "amber-glass-arc-floor-lamp",
+      "minimalist-arch-floor-lamp",
+      "nordic-glass-lamp",
+      "scandi-tripod-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "flexible-clip-on-lamp",
+      "brass-reading-lamp",
+      "matte-black-bedside-spot",
+      "black-gooseneck-spotlight",
+      "rechargeable-magnetic-reading-bar"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.5147714448836774,
+     "hit": true
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "industrial-pulley-desk-lamp",
+      "magnifying-led-desk-lamp",
+      "modern-linear-desk-lamp",
+      "brass-reading-lamp",
+      "industrial-desk-lamp-clock"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "boho-rattan-floor-lantern",
+      "boho-woven-rattan-wall-sconce",
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-bamboo-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-wall-sconce",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-bamboo-pendant",
+      "bamboo-pendant-light",
+      "japanese-noguchi-style-pendant",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-caged-wall-sconce",
+      "industrial-pipe-desk-lamp",
+      "geometric-metal-pendant",
+      "industrial-pulley-pendant"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "industrial-pulley-pendant",
+      "wire-mesh-pendant-lamp",
+      "industrial-cage-lamp",
+      "geometric-metal-pendant",
+      "concrete-cube-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "crystal-globe-lamp",
+      "crystal-flushmount-ceiling-light",
+      "crystal-linear-pendant-bar",
+      "crystal-globe-pendant-bar",
+      "crystal-pendant-single-drop"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "marble-brass-linear-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "amber-glass-mushroom-lamp",
+      "amber-glass-desk-cylinder",
+      "amber-glass-wall-sconce",
+      "amber-glass-pendant-cluster",
+      "vintage-amber-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "brass-spindle-floor-lamp",
+      "vintage-bankers-lamp",
+      "brass-reading-lamp",
+      "brass-architect-floor-lamp",
+      "minimalist-linear-desk-light"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6548086577531307,
+     "hit": true
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "concrete-base-table-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "japanese-tatami-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "wooden-cube-bedside-lamp",
+      "amber-glass-multi-pendant",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.23463936301137822,
+     "hit": true
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "ceramic-wabi-sabi-pendant",
+      "ceramic-bedside-lamp",
+      "white-ceramic-pleated-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "vintage-kerosene-style-lamp",
+      "vintage-amber-pendant",
+      "vintage-bankers-lamp",
+      "stained-glass-tiffany-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgbw-led-bulb-e27",
+      "smart-corner-floor-lightbar",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-ceiling-flushmount",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "sunset-aura-desk-globe",
+      "sunset-projection-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "neon-sign-heart-lamp",
+      "rgb-gaming-corner-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "marble-brass-table-cylinder",
+      "industrial-baker-pendant",
+      "vintage-bankers-lamp",
+      "smart-wifi-floor-lamp",
+      "rgb-gaming-corner-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.25,
+     "ndcg": 0.27727342735504823,
+     "hit": true
+    },
+    {
+     "query": "neon",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "crystal-table-globe-lamp",
+      "modern-brass-candelabra",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.8772153153380493,
+     "hit": true
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-garden-lantern",
+      "solar-hanging-mason-jar-light"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-rattan-patio-lamp",
+      "solar-hanging-mason-jar-light",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "portable-lantern-lamp",
+      "wireless-mushroom-lamp",
+      "rechargeable-magnetic-reading-bar",
+      "rechargeable-touch-lantern",
+      "solar-rattan-patio-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "feather-shade-pendant",
+      "ceramic-bedside-lamp",
+      "woven-seagrass-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7653606369886217,
+     "hit": true
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "japanese-noguchi-style-pendant",
+      "wire-mesh-pendant-lamp",
+      "vintage-kerosene-style-lamp",
+      "industrial-desk-lamp-clock",
+      "industrial-pipe-desk-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "arc-floor-lamp",
+      "brass-architect-floor-lamp",
+      "boho-rattan-floor-lantern",
+      "boho-woven-bamboo-floor-lamp",
+      "brass-banker-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "brass-reading-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "ceramic-bedside-lamp",
+      "woven-seagrass-table-lamp",
+      "rattan-table-lamp",
+      "boho-fringe-table-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "minimalist-wall-sconce",
+      "gold-leaf-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "scandi-wood-wall-sconce",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "cloud-pendant-light-shade",
+      "smoky-glass-pendant-globe",
+      "opal-pendant-lamp",
+      "minimalist-black-pendant-bar",
+      "concrete-cube-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "smart-ceiling-flushmount",
+      "industrial-pulley-wall-lamp",
+      "scandi-wood-wall-sconce",
+      "bamboo-pendant-light"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-linear-pendant-bar",
+      "crystal-drop-wall-sconce",
+      "crystal-table-globe-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "solar-rattan-patio-lamp",
+      "solar-hanging-mason-jar-light",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-wall-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "kids-cloud-night-lamp",
+      "amber-glass-bedside-globe",
+      "ceramic-bedside-lamp",
+      "mushroom-glass-bedside-lamp",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    }
+   ],
+   "Reguły, skala wag (pełny)": [
+    {
+     "query": "lampa podłogowa",
+     "top": [
+      "brass-banker-floor-lamp",
+      "arc-floor-lamp",
+      "brass-architect-floor-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "industrial-mesh-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampka nocna",
+     "top": [
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "amber-glass-bedside-globe",
+      "boho-macrame-table-lamp",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa biurkowa",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp",
+      "minimalist-black-desk-arch"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kinkiet",
+     "top": [
+      "minimalist-wall-sconce",
+      "amber-glass-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "industrial-caged-wall-sconce",
+      "minimalist-black-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa wisząca",
+     "top": [
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "paper-origami-pendant",
+      "led-ring-pendant-light"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "żyrandol",
+     "top": [
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "modern-brass-candelabra",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "lampa sufitowa",
+     "top": [
+      "cloud-pendant-light-shade",
+      "smart-ceiling-flushmount",
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "reflektor",
+     "top": [
+      "black-track-spotlight",
+      "industrial-spot-pendant-bar",
+      "industrial-tripod-desk-spot",
+      "industrial-spotlight-floor-lamp",
+      "industrial-tripod-searchlight"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do łazienki",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "neon-sign-heart-lamp",
+      "industrial-caged-wall-sconce",
+      "boho-woven-paper-pendant",
+      "concrete-cube-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "biała lampa do łazienki",
+     "top": [
+      "smart-ceiling-flushmount",
+      "crystal-flushmount-ceiling-light",
+      "vintage-pleated-shade-wall-sconce",
+      "boho-woven-paper-pendant",
+      "concrete-cube-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "lampa nad stół w jadalni",
+     "top": [
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "boho-woven-rattan-pendant",
+      "industrial-caged-pendant-bar",
+      "smoky-glass-pendant-globe"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa nad wyspę kuchenną",
+     "top": [
+      "opal-pendant-lamp",
+      "minimalist-linear-pendant",
+      "minimalist-black-pendant-bar",
+      "industrial-baker-pendant",
+      "vintage-amber-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa do sypialni",
+     "top": [
+      "boho-fringe-table-lamp",
+      "boho-macrame-pendant-light",
+      "ceramic-bedside-lamp",
+      "amber-glass-bedside-globe",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.3156484524795145,
+     "hit": true
+    },
+    {
+     "query": "lampa do salonu przy sofie",
+     "top": [
+      "arc-floor-lamp",
+      "amber-glass-arc-floor-lamp",
+      "minimalist-arch-floor-lamp",
+      "scandi-tripod-floor-lamp",
+      "nordic-glass-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa do czytania w łóżku",
+     "top": [
+      "flexible-clip-on-lamp",
+      "rechargeable-magnetic-reading-bar",
+      "black-gooseneck-spotlight",
+      "matte-black-bedside-spot",
+      "touch-dimmer-bedside-bar"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.4912596920895758,
+     "hit": true
+    },
+    {
+     "query": "lampa do pracy przy biurku",
+     "top": [
+      "industrial-pulley-desk-lamp",
+      "magnifying-led-desk-lamp",
+      "modern-linear-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa boho",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-bamboo-pendant",
+      "boho-macrame-pendant-light",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa rattanowa",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-wall-sconce",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa bambusowa",
+     "top": [
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-bamboo-pendant",
+      "bamboo-pendant-light",
+      "japanese-noguchi-style-pendant",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "lampa industrialna",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-caged-wall-sconce",
+      "industrial-pipe-desk-lamp",
+      "geometric-metal-pendant",
+      "industrial-pulley-pendant"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "loftowa lampa wisząca",
+     "top": [
+      "industrial-pulley-pendant",
+      "industrial-cage-lamp",
+      "geometric-metal-pendant",
+      "wire-mesh-pendant-lamp",
+      "industrial-caged-pendant-bar"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "lampa kryształowa",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "crystal-linear-pendant-bar",
+      "crystal-globe-pendant-bar",
+      "crystal-globe-lamp",
+      "crystal-pendant-single-drop"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa z marmuru",
+     "top": [
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "marble-brass-linear-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bursztynowe szkło",
+     "top": [
+      "amber-glass-mushroom-lamp",
+      "amber-glass-desk-cylinder",
+      "amber-glass-wall-sconce",
+      "vintage-brass-banker-spot",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa mosiężna",
+     "top": [
+      "brass-spindle-floor-lamp",
+      "brass-reading-lamp",
+      "brass-architect-floor-lamp",
+      "art-deco-brass-globe",
+      "vintage-bankers-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa betonowa",
+     "top": [
+      "concrete-base-table-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "drewniana lampa",
+     "top": [
+      "japanese-tatami-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "wooden-cube-bedside-lamp",
+      "amber-glass-multi-pendant",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.23463936301137822,
+     "hit": true
+    },
+    {
+     "query": "lampa ceramiczna",
+     "top": [
+      "ceramic-wabi-sabi-pendant",
+      "ceramic-bedside-lamp",
+      "white-ceramic-pleated-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa vintage",
+     "top": [
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp",
+      "vintage-bankers-lamp",
+      "vintage-brass-banker-pendant",
+      "stained-glass-tiffany-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "lampa smart",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "inteligentna lampa wifi",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgbw-led-bulb-e27",
+      "smart-rgb-desk-ambient-ring",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa RGB",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-rgb-led-lightbar-pair",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "kolorowa magiczna lampa",
+     "top": [
+      "sunset-aura-desk-globe",
+      "sunset-projection-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "stained-glass-tiffany-lamp",
+      "rgb-gaming-corner-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "lampa która może świecić na zielono",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "rgb-gaming-corner-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "neon",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "projektor gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "crystal-table-globe-lamp",
+      "modern-brass-candelabra",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.8772153153380493,
+     "hit": true
+    },
+    {
+     "query": "lampa ogrodowa",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "solar-rattan-patio-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "wodoodporna lampa na taras",
+     "top": [
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-garden-lantern",
+      "portable-lantern-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa solarna",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-outdoor-wall-lantern",
+      "solar-rattan-patio-lamp",
+      "solar-hanging-mason-jar-light",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "przenośna lampa na akumulator",
+     "top": [
+      "portable-lantern-lamp",
+      "wireless-mushroom-lamp",
+      "solar-rattan-patio-lamp",
+      "modern-linear-desk-lamp",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "woven-seagrass-table-lamp",
+      "rattan-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7039180890341347,
+     "hit": true
+    },
+    {
+     "query": "lampa z lupą",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa w stylu japońskim",
+     "top": [
+      "japanese-noguchi-style-pendant",
+      "vintage-kerosene-style-lamp",
+      "industrial-pipe-desk-lamp",
+      "pleated-paper-lantern-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "lampa z piórami",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "retro-mushroom-table-bar",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "floor lamp",
+     "top": [
+      "arc-floor-lamp",
+      "brass-architect-floor-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "brass-banker-floor-lamp",
+      "industrial-mesh-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "desk lamp",
+     "top": [
+      "magnifying-led-desk-lamp",
+      "industrial-pulley-desk-lamp",
+      "industrial-desk-lamp-clock",
+      "modern-linear-desk-lamp",
+      "brass-reading-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "bedside lamp",
+     "top": [
+      "ceramic-bedside-lamp",
+      "woven-seagrass-table-lamp",
+      "rattan-table-lamp",
+      "boho-fringe-table-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "wall sconce",
+     "top": [
+      "minimalist-wall-sconce",
+      "gold-leaf-wall-sconce",
+      "crystal-drop-wall-sconce",
+      "scandi-wood-wall-sconce",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pendant light",
+     "top": [
+      "cloud-pendant-light-shade",
+      "opal-pendant-lamp",
+      "led-ring-pendant-light",
+      "minimalist-black-pendant-bar",
+      "concrete-cube-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "bathroom light",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "crystal-wall-sconce-pair",
+      "industrial-pulley-wall-lamp",
+      "scandi-wood-wall-sconce",
+      "concrete-wall-sconce-updown"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "crystal chandelier",
+     "top": [
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-linear-pendant-bar",
+      "crystal-drop-wall-sconce",
+      "crystal-table-globe-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "outdoor garden light",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "solar-hanging-mason-jar-light",
+      "solar-outdoor-post-lamp",
+      "solar-rattan-patio-lamp",
+      "solar-outdoor-wall-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "smart rgb lamp",
+     "top": [
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "kids night light",
+     "top": [
+      "kids-cloud-night-lamp",
+      "amber-glass-bedside-globe",
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "smart-rgb-underbed-light-kit"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    }
+   ]
+  },
+  "fleksyjny": {
+   "Kolejność z katalogu": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.24630238874073,
+     "hit": true
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.4367467095119258,
+     "hit": true
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie neony",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    }
+   ],
+   "BM25 bez lematyzacji": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "crystal-wall-sconce-pair"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "crystal-ring-pendant-chandelier",
+      "minimalist-black-pendant-bar",
+      "crystal-globe-pendant-bar"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "black-track-spotlight",
+      "crystal-pendant-single-drop",
+      "industrial-spot-pendant-bar"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6164336326286644,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "vintage-kerosene-style-lamp",
+      "boho-rattan-floor-lantern",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-pendant"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "industrial-tripod-floor-search",
+      "boho-woven-jute-table-lamp",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.30078518014914984,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "crystal-globe-pendant-bar",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "amber-glass-table-globe",
+      "pleated-fabric-shade-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "industrial-spot-pendant-bar",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "retro-orange-space-age-lamp",
+      "industrial-pipe-desk-lamp",
+      "arc-floor-lamp",
+      "crystal-bedside-touch-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "retro-orange-space-age-lamp",
+      "industrial-pipe-desk-lamp",
+      "arc-floor-lamp",
+      "crystal-bedside-touch-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "feather-shade-pendant",
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "feather-table-globe-lamp",
+      "architect-clamp-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.5307212739772434,
+     "hit": true
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "macie neony",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "smart-rgbw-led-bulb-e27",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 0.6,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.4468535299918563,
+     "hit": true
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-spot",
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    }
+   ],
+   "BM25 z lematyzacją": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "brass-banker-floor-lamp",
+      "industrial-spotlight-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "industrial-tripod-floor-search",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [
+      "kids-cloud-night-lamp",
+      "wireless-mushroom-lamp",
+      "ceramic-bedside-lamp",
+      "wooden-cube-bedside-lamp",
+      "smart-rgb-underbed-light-kit"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6548086577531307,
+     "hit": true
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "brass-banker-floor-lamp",
+      "smoked-glass-table-cylinder",
+      "industrial-tripod-desk-spot",
+      "vintage-brass-banker-pendant",
+      "amber-glass-desk-cylinder"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.30078518014914984,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "crystal-wall-sconce-pair",
+      "industrial-caged-wall-sconce",
+      "boho-bamboo-wall-sconce",
+      "minimalist-wall-sconce",
+      "vintage-brass-banker-spot"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "led-ring-pendant-light",
+      "crystal-ring-pendant-chandelier",
+      "boho-woven-bamboo-pendant"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [
+      "feather-pendant-cloud-chandelier",
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "crystal-flushmount-ceiling-light",
+      "paper-origami-pendant",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [
+      "industrial-tripod-floor-search",
+      "magnetic-track-spot-light",
+      "black-track-spotlight",
+      "industrial-tripod-searchlight",
+      "industrial-spotlight-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "boho-woven-rattan-wall-sconce",
+      "vintage-kerosene-style-lamp",
+      "boho-rattan-floor-lantern",
+      "rattan-table-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "boho-bamboo-wall-sconce",
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3903800499921017,
+     "hit": true
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "industrial-caged-pendant-bar",
+      "industrial-caged-wall-sconce",
+      "geometric-metal-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.3156484524795145,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "crystal-globe-pendant-bar",
+      "crystal-ring-pendant-chandelier",
+      "crystal-cascade-pendant",
+      "crystal-flushmount-ceiling-light"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "amber-glass-table-globe",
+      "pleated-fabric-shade-lamp",
+      "brass-arc-wall-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6843515475204855,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "concrete-wall-sconce-updown",
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "industrial-tripod-floor-search",
+      "industrial-spot-pendant-bar",
+      "scandi-wood-wall-sconce"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.18154179253735267,
+     "hit": true
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "retro-orange-space-age-lamp",
+      "industrial-pipe-desk-lamp",
+      "arc-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "solar-hanging-mason-jar-light",
+      "retro-orange-space-age-lamp",
+      "industrial-pipe-desk-lamp",
+      "arc-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-table-globe-lamp",
+      "rechargeable-bar-table-lamp",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.46927872602275644,
+     "hit": true
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "macie neony",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "smart-wifi-lamp",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 0.6,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.4468535299918563,
+     "hit": true
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-spot",
+      "vintage-amber-pendant",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    }
+   ],
+   "Reguły bez lematyzacji": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp",
+      "arc-floor-lamp",
+      "brass-banker-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.13120507751234178,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "minimalist-wall-sconce",
+      "amber-glass-wall-sconce",
+      "crystal-wall-sconce-pair",
+      "crystal-drop-wall-sconce",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-macrame-pendant-light",
+      "opal-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 0.5,
+     "ndcg": 0.6608397947263839,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "opal-pendant-lamp",
+      "crystal-globe-pendant-bar",
+      "boho-macrame-pendant-globe",
+      "paper-origami-pendant",
+      "vintage-amber-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "boho-rattan-floor-lantern",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-pendant",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.16812753627111746,
+     "hit": true
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "industrial-cage-lamp",
+      "industrial-pipe-desk-lamp",
+      "industrial-mesh-floor-lamp",
+      "wire-mesh-pendant-lamp",
+      "geometric-metal-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "crystal-globe-pendant-bar",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "pleated-fabric-shade-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "wireless-mushroom-lamp",
+      "rechargeable-bar-table-lamp",
+      "ceramic-bedside-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "wireless-mushroom-lamp",
+      "rechargeable-bar-table-lamp",
+      "ceramic-bedside-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp",
+      "ceramic-bedside-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.7653606369886217,
+     "hit": true
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "modern-brass-candelabra",
+      "crystal-table-globe-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "macie neony",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-lamp",
+      "smart-corner-floor-lightbar",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "vintage-kerosene-style-lamp",
+      "vintage-amber-pendant",
+      "vintage-brass-banker-pendant",
+      "vintage-bankers-lamp",
+      "stained-glass-tiffany-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    }
+   ],
+   "Reguły, wagi równe": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "brass-banker-floor-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp",
+      "arc-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.639945385422766,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [
+      "wireless-mushroom-lamp",
+      "ceramic-bedside-lamp",
+      "kids-cloud-night-lamp",
+      "boho-macrame-table-lamp",
+      "scandi-tripod-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.38356636737133565,
+     "hit": true
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "smoked-glass-table-cylinder",
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "minimalist-black-desk-arch",
+      "japanese-tatami-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "minimalist-wall-sconce",
+      "crystal-wall-sconce-pair",
+      "crystal-drop-wall-sconce",
+      "amber-glass-wall-sconce",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "boho-woven-bamboo-pendant",
+      "brass-banker-floor-lamp",
+      "led-ring-pendant-light",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "feather-pendant-cloud-chandelier",
+      "crystal-cascade-pendant",
+      "modern-brass-candelabra"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "opal-pendant-lamp",
+      "paper-origami-pendant",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "crystal-flushmount-ceiling-light"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [
+      "black-track-spotlight",
+      "industrial-tripod-searchlight",
+      "industrial-spot-pendant-bar",
+      "industrial-spotlight-floor-lamp",
+      "industrial-tripod-desk-spot"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-wall-sconce",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "japanese-noguchi-style-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.16812753627111746,
+     "hit": true
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "industrial-caged-wall-sconce",
+      "wire-mesh-pendant-lamp",
+      "geometric-metal-pendant",
+      "industrial-caged-pendant-bar",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6164336326286644,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "crystal-globe-lamp",
+      "crystal-flushmount-ceiling-light",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.38356636737133565,
+     "hit": true
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "brass-spindle-floor-lamp",
+      "marble-brass-accent-lamp",
+      "vintage-bankers-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-wall-sconce-updown",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.20210734650054757,
+     "hit": true
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "amber-glass-multi-pendant",
+      "industrial-tripod-searchlight",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "japanese-tatami-floor-lamp",
+      "solar-rattan-patio-lamp",
+      "brass-banker-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-table-globe-lamp",
+      "ceramic-bedside-lamp",
+      "cloud-pendant-light-shade",
+      "boho-macrame-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.6713860725233041,
+     "hit": true
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "crystal-table-globe-lamp",
+      "modern-brass-candelabra",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.8772153153380493,
+     "hit": true
+    },
+    {
+     "query": "macie neony",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp",
+      "matte-black-bedside-spot",
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-wifi-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-ceiling-flushmount",
+      "smart-corner-floor-lightbar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "vintage-kerosene-style-lamp",
+      "vintage-bankers-lamp",
+      "vintage-amber-pendant",
+      "stained-glass-tiffany-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    }
+   ],
+   "Reguły, skala wag (pełny)": [
+    {
+     "query": "szukam lampy podłogowej",
+     "top": [
+      "brass-banker-floor-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "magnifying-led-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lampki nocnej",
+     "top": [
+      "ceramic-bedside-lamp",
+      "kids-cloud-night-lamp",
+      "boho-macrame-table-lamp",
+      "rechargeable-bar-table-lamp",
+      "flexible-clip-on-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "macie lampy biurkowe",
+     "top": [
+      "smoked-glass-table-cylinder",
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-rattan-pendant",
+      "boho-woven-paper-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "pokażcie kinkiety",
+     "top": [
+      "minimalist-wall-sconce",
+      "amber-glass-wall-sconce",
+      "crystal-wall-sconce-pair",
+      "crystal-drop-wall-sconce",
+      "industrial-caged-wall-sconce"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie lampy wiszące",
+     "top": [
+      "boho-woven-bamboo-pendant",
+      "led-ring-pendant-light",
+      "vintage-brass-banker-pendant",
+      "brass-banker-floor-lamp",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "szukam żyrandola",
+     "top": [
+      "boho-fringe-pendant-chandelier",
+      "smoky-glass-chandelier",
+      "crystal-cascade-pendant",
+      "modern-brass-candelabra",
+      "crystal-ring-pendant-chandelier"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.830419897363192,
+     "hit": true
+    },
+    {
+     "query": "jakieś lampy sufitowe",
+     "top": [
+      "opal-pendant-lamp",
+      "paper-origami-pendant",
+      "vintage-amber-pendant",
+      "minimalist-linear-pendant",
+      "crystal-globe-pendant-bar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję kilku reflektorów",
+     "top": [
+      "black-track-spotlight",
+      "industrial-spotlight-floor-lamp",
+      "industrial-tripod-searchlight",
+      "industrial-spot-pendant-bar",
+      "industrial-tripod-desk-spot"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "chcę kupić lampę rattanową",
+     "top": [
+      "boho-woven-rattan-pendant",
+      "rattan-table-lamp",
+      "solar-rattan-patio-lamp",
+      "boho-woven-rattan-wall-sconce",
+      "boho-rattan-floor-lantern"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "szukam bambusowej lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "japanese-noguchi-style-pendant",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.15101961822780524,
+     "hit": true
+    },
+    {
+     "query": "macie lampy industrialne",
+     "top": [
+      "industrial-caged-wall-sconce",
+      "wire-mesh-pendant-lamp",
+      "geometric-metal-pendant",
+      "industrial-caged-pendant-bar",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6164336326286644,
+     "hit": true
+    },
+    {
+     "query": "pokażcie kryształowe lampy",
+     "top": [
+      "crystal-flushmount-ceiling-light",
+      "brass-banker-floor-lamp",
+      "crystal-ring-pendant-chandelier",
+      "crystal-globe-pendant-bar",
+      "vintage-brass-banker-pendant"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6548086577531307,
+     "hit": true
+    },
+    {
+     "query": "szukam mosiężnej lampy",
+     "top": [
+      "vintage-brass-banker-pendant",
+      "marble-brass-accent-lamp",
+      "brass-arc-wall-lamp",
+      "marble-brass-table-cylinder",
+      "brass-banker-floor-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "interesują mnie betonowe lampy",
+     "top": [
+      "brass-banker-floor-lamp",
+      "concrete-wall-sconce-updown",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.2960819109658652,
+     "hit": true
+    },
+    {
+     "query": "szukam drewnianej lampy",
+     "top": [
+      "amber-glass-multi-pendant",
+      "brass-banker-floor-lamp",
+      "himalayan-salt-rock-lamp",
+      "vintage-brass-banker-pendant",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "macie ceramiczne lampy",
+     "top": [
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "boho-woven-rattan-pendant",
+      "boho-woven-paper-pendant",
+      "boho-woven-bamboo-pendant"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "szukam lamp solarnych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "potrzebuję lamp ogrodowych",
+     "top": [
+      "solar-outdoor-post-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "smart-wifi-floor-lamp",
+      "vintage-kerosene-style-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "szukam lampki dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "feather-table-globe-lamp",
+      "boho-macrame-table-lamp",
+      "cloud-pendant-light-shade",
+      "ceramic-bedside-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.6713860725233041,
+     "hit": true
+    },
+    {
+     "query": "szukam projektora gwiazd",
+     "top": [
+      "starry-galaxy-projector-globe",
+      "crystal-table-globe-lamp",
+      "modern-brass-candelabra",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.8772153153380493,
+     "hit": true
+    },
+    {
+     "query": "macie neony",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "neon-sign-heart-lamp",
+      "matte-black-bedside-spot",
+      "woven-seagrass-table-lamp",
+      "boho-woven-bamboo-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "pokażcie lampy smart",
+     "top": [
+      "smart-wifi-floor-lamp",
+      "smart-rgb-desk-ambient-ring",
+      "smart-wifi-lamp",
+      "smart-corner-floor-lightbar",
+      "smart-ceiling-flushmount"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "szukam lampy vintage",
+     "top": [
+      "vintage-kerosene-style-lamp",
+      "vintage-amber-pendant",
+      "vintage-brass-banker-pendant",
+      "vintage-bankers-lamp",
+      "stained-glass-tiffany-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8687949224876582,
+     "hit": true
+    }
+   ]
+  },
+  "nieprecyzyjny": {
+   "Kolejność z katalogu": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś na balkon",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.5,
+     "ndcg": 0.21398626473452756,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.13120507751234178,
+     "hit": true
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "concrete-cube-pendant",
+      "concrete-wall-sconce-updown",
+      "wireless-mushroom-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    }
+   ],
+   "BM25 bez lematyzacji": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "feather-pendant-cloud-chandelier",
+      "feather-shade-pendant",
+      "minimalist-wall-sconce",
+      "boho-fringe-pendant-chandelier",
+      "sunset-projection-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "arc-floor-lamp",
+      "black-gooseneck-spotlight",
+      "flexible-usb-reading-light",
+      "brass-reading-lamp",
+      "brass-spindle-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.3156484524795145,
+     "hit": true
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "modern-linear-desk-lamp",
+      "brass-architect-floor-lamp",
+      "industrial-pulley-desk-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "feather-shade-pendant",
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "feather-table-globe-lamp",
+      "architect-clamp-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.44149241373678083,
+     "hit": true
+    },
+    {
+     "query": "coś na balkon",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "industrial-tripod-desk-spot",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "led-ring-pendant-light",
+      "geometric-metal-pendant",
+      "vintage-amber-pendant",
+      "smoke-glass-pendant-cluster",
+      "opal-pendant-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "opal-pendant-lamp",
+      "rgb-gaming-corner-lamp",
+      "sunset-aura-desk-globe",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.38356636737133565,
+     "hit": true
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "archaeology-fossil-stone-lamp",
+      "industrial-spot-pendant-bar",
+      "industrial-desk-lamp-clock",
+      "industrial-tripod-searchlight",
+      "wire-mesh-pendant-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [
+      "portable-lantern-lamp",
+      "industrial-cage-lamp",
+      "rechargeable-touch-lantern",
+      "black-track-spotlight",
+      "flexible-clip-on-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "industrial-tripod-desk-spot",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "led-under-monitor-lightbar",
+      "magnetic-track-spot-light",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "vintage-bankers-lamp",
+      "flexible-usb-reading-light",
+      "magnetic-track-spot-light",
+      "arc-floor-lamp",
+      "brass-reading-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.4703652827859579,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "under-cabinet-led-strip",
+      "smart-rgb-underbed-light-kit",
+      "vintage-amber-pendant",
+      "smoked-glass-dome-lamp",
+      "industrial-baker-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "minimalist-wall-sconce",
+      "black-gooseneck-spotlight",
+      "minimalist-black-wall-sconce",
+      "industrial-spot-pendant-bar",
+      "minimalist-arch-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [
+      "feather-shade-pendant",
+      "flexible-clip-on-lamp",
+      "flexible-usb-reading-light",
+      "black-gooseneck-spotlight",
+      "brass-spindle-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    }
+   ],
+   "BM25 z lematyzacją": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "ceramic-bedside-lamp",
+      "feather-table-globe-lamp",
+      "boho-macrame-pendant-light",
+      "amber-glass-table-globe",
+      "woven-seagrass-table-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "black-gooseneck-spotlight",
+      "matte-black-bedside-spot",
+      "flexible-clip-on-lamp",
+      "flexible-usb-reading-light",
+      "brass-reading-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.4912596920895758,
+     "hit": true
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "modern-linear-desk-lamp",
+      "brass-architect-floor-lamp",
+      "industrial-pulley-desk-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.7860137352654724,
+     "hit": true
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "feather-shade-pendant",
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "feather-table-globe-lamp",
+      "architect-clamp-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.44149241373678083,
+     "hit": true
+    },
+    {
+     "query": "coś na balkon",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "industrial-tripod-desk-spot",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "led-ring-pendant-light",
+      "opal-pendant-lamp",
+      "boho-woven-rattan-pendant",
+      "amber-glass-multi-pendant",
+      "crystal-linear-pendant-bar"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "smart-wifi-lamp",
+      "opal-pendant-lamp",
+      "rgb-gaming-corner-lamp",
+      "sunset-aura-desk-globe",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6548086577531307,
+     "hit": true
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "archaeology-fossil-stone-lamp",
+      "boho-woven-seagrass-pendant",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-rattan-pendant",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [
+      "crystal-globe-lamp",
+      "crystal-pendant-single-drop",
+      "nordic-glass-lamp",
+      "portable-lantern-lamp",
+      "industrial-cage-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "solar-outdoor-garden-lantern",
+      "industrial-tripod-desk-spot",
+      "industrial-tripod-searchlight",
+      "led-under-monitor-lightbar",
+      "industrial-tripod-floor-search"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "led-under-monitor-lightbar",
+      "magnetic-track-spot-light",
+      "opal-pendant-lamp",
+      "industrial-cage-lamp",
+      "amber-glass-arc-floor-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "kids-cloud-night-lamp",
+      "feather-shade-pendant",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "vintage-bankers-lamp",
+      "brass-banker-floor-lamp",
+      "archaeology-fossil-stone-lamp",
+      "vintage-brass-banker-pendant",
+      "led-lamp-10w"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6992148198508501,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "under-cabinet-led-strip",
+      "smart-rgb-underbed-light-kit",
+      "vintage-amber-pendant",
+      "smoked-glass-dome-lamp",
+      "industrial-baker-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "minimalist-wall-sconce",
+      "black-gooseneck-spotlight",
+      "minimalist-black-wall-sconce",
+      "industrial-spot-pendant-bar",
+      "minimalist-arch-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [
+      "smart-flexible-led-neon-strip",
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "smart-ceiling-flushmount",
+      "smart-rgb-underbed-light-kit"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    }
+   ],
+   "Reguły bez lematyzacji": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "amber-glass-bedside-globe",
+      "boho-fringe-table-lamp",
+      "feather-table-globe-lamp",
+      "ceramic-bedside-lamp",
+      "boho-macrame-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "rechargeable-magnetic-reading-bar",
+      "flexible-clip-on-lamp",
+      "matte-black-bedside-spot",
+      "black-gooseneck-spotlight",
+      "brass-reading-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.639945385422766,
+     "hit": true
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "led-under-monitor-lightbar",
+      "solar-outdoor-wall-lantern",
+      "arc-floor-lamp",
+      "scandi-tripod-floor-lamp",
+      "vintage-amber-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "coś na balkon",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "vintage-amber-pendant",
+      "smoky-glass-pendant-globe",
+      "smoke-glass-pendant-cluster",
+      "geometric-metal-pendant",
+      "opal-pendant-lamp"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "opal-pendant-lamp",
+      "wire-mesh-pendant-lamp",
+      "boho-woven-bamboo-floor-lamp",
+      "ceramic-wabi-sabi-pendant"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "retro-mushroom-table-bar",
+      "vintage-kerosene-style-lamp",
+      "boho-woven-seagrass-pendant",
+      "industrial-pipe-desk-lamp",
+      "amber-glass-bottle-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.3333333333333333,
+     "ndcg": 0.16958010263680806,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "rechargeable-touch-lantern",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "wireless-mushroom-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "scandi-tripod-floor-lamp",
+      "woven-seagrass-table-lamp",
+      "archaeology-fossil-stone-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "vintage-bankers-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "under-cabinet-led-strip",
+      "concrete-base-table-lamp",
+      "scandi-tripod-floor-lamp",
+      "vintage-amber-pendant",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "rechargeable-touch-lantern",
+      "touch-dimmer-bedside-bar",
+      "kids-cloud-night-lamp",
+      "smart-wifi-lamp",
+      "minimalist-wall-sconce"
+     ],
+     "precision": 0.2,
+     "rr": 0.2,
+     "ndcg": 0.13120507751234178,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    }
+   ],
+   "Reguły, wagi równe": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "amber-glass-bedside-globe",
+      "ceramic-bedside-lamp",
+      "feather-table-globe-lamp",
+      "amber-glass-table-globe",
+      "boho-fringe-table-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "brass-reading-lamp",
+      "flexible-clip-on-lamp",
+      "matte-black-bedside-spot",
+      "amber-glass-desk-cylinder",
+      "black-track-spotlight"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "black-track-spotlight",
+      "magnifying-led-desk-lamp",
+      "modern-linear-desk-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.6164336326286644,
+     "hit": true
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "coś na balkon",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "opal-pendant-lamp",
+      "vintage-amber-pendant",
+      "smoky-glass-pendant-globe",
+      "minimalist-linear-pendant",
+      "boho-woven-rattan-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "smart-wifi-lamp",
+      "sunset-aura-desk-globe",
+      "wire-mesh-pendant-lamp",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "japanese-noguchi-style-pendant",
+      "archaeology-fossil-stone-lamp",
+      "wire-mesh-pendant-lamp",
+      "vintage-kerosene-style-lamp",
+      "boho-woven-seagrass-pendant"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.34519134224686937,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [
+      "crystal-globe-lamp",
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "crystal-pendant-single-drop",
+      "smoky-glass-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "rechargeable-touch-lantern",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "wireless-mushroom-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "scandi-tripod-floor-lamp",
+      "woven-seagrass-table-lamp",
+      "archaeology-fossil-stone-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "kids-cloud-night-lamp",
+      "rgb-gaming-corner-lamp",
+      "cloud-pendant-light-shade",
+      "neon-sign-heart-lamp",
+      "minimalist-wall-sconce"
+     ],
+     "precision": 0.4,
+     "rr": 0.5,
+     "ndcg": 0.36005461457723403,
+     "hit": true
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "vintage-bankers-lamp",
+      "brass-banker-floor-lamp",
+      "smoked-glass-desk-sphere",
+      "stained-glass-tiffany-lamp",
+      "archaeology-fossil-stone-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "under-cabinet-led-strip",
+      "vintage-amber-pendant",
+      "amber-glass-multi-pendant",
+      "crystal-globe-pendant-bar",
+      "minimalist-black-pendant-bar"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "minimalist-wall-sconce",
+      "rechargeable-touch-lantern",
+      "touch-dimmer-bedside-bar",
+      "kids-cloud-night-lamp",
+      "smart-wifi-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "smart-flexible-led-neon-strip",
+      "smart-corner-floor-lightbar",
+      "smart-rgbw-led-bulb-e27"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    }
+   ],
+   "Reguły, skala wag (pełny)": [
+    {
+     "query": "coś przytulnego do sypialni",
+     "top": [
+      "amber-glass-bedside-globe",
+      "feather-table-globe-lamp",
+      "ceramic-bedside-lamp",
+      "boho-fringe-table-lamp",
+      "amber-glass-table-globe"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5087403079104241,
+     "hit": true
+    },
+    {
+     "query": "coś do czytania wieczorem",
+     "top": [
+      "flexible-clip-on-lamp",
+      "rechargeable-magnetic-reading-bar",
+      "matte-black-bedside-spot",
+      "brass-reading-lamp",
+      "black-gooseneck-spotlight"
+     ],
+     "precision": 0.6,
+     "rr": 0.5,
+     "ndcg": 0.5296347172140421,
+     "hit": true
+    },
+    {
+     "query": "światło do pracy przy komputerze",
+     "top": [
+      "led-under-monitor-lightbar",
+      "brass-reading-lamp",
+      "magnifying-led-desk-lamp",
+      "kinetic-magnetic-balance-lamp",
+      "brass-architect-floor-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.639945385422766,
+     "hit": true
+    },
+    {
+     "query": "prezent dla dziecka",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.8318724637288826,
+     "hit": true
+    },
+    {
+     "query": "coś na balkon",
+     "top": [],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "oświetlenie nad stołem",
+     "top": [
+      "vintage-amber-pendant",
+      "smoky-glass-pendant-globe",
+      "opal-pendant-lamp",
+      "smoke-glass-pendant-cluster",
+      "geometric-metal-pendant"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "lampa, która zmienia kolory",
+     "top": [
+      "rgb-gaming-corner-lamp",
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "stained-glass-tiffany-lamp",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 0.8,
+     "rr": 1.0,
+     "ndcg": 0.8539316501572937,
+     "hit": true
+    },
+    {
+     "query": "coś w naturalnym stylu",
+     "top": [
+      "boho-woven-seagrass-pendant",
+      "vintage-kerosene-style-lamp",
+      "japanese-noguchi-style-pendant",
+      "archaeology-fossil-stone-lamp",
+      "industrial-pipe-desk-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.48522855511632257,
+     "hit": true
+    },
+    {
+     "query": "coś eleganckiego i błyszczącego",
+     "top": [
+      "crystal-globe-lamp",
+      "marble-brass-table-cylinder",
+      "marble-brass-accent-lamp",
+      "crystal-pendant-single-drop",
+      "smoky-glass-chandelier"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    },
+    {
+     "query": "coś na kemping",
+     "top": [
+      "rechargeable-touch-lantern",
+      "portable-lantern-lamp"
+     ],
+     "precision": 0.4,
+     "rr": 1.0,
+     "ndcg": 0.5531464700081437,
+     "hit": true
+    },
+    {
+     "query": "lampa bez kabla",
+     "top": [
+      "wireless-mushroom-lamp",
+      "ceramic-wabi-sabi-pendant",
+      "scandi-tripod-floor-lamp",
+      "woven-seagrass-table-lamp",
+      "archaeology-fossil-stone-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.3391602052736161,
+     "hit": true
+    },
+    {
+     "query": "coś do pokoju gracza",
+     "top": [
+      "kids-cloud-night-lamp",
+      "cloud-pendant-light-shade",
+      "starry-galaxy-projector-globe",
+      "feather-shade-pendant",
+      "feather-table-globe-lamp"
+     ],
+     "precision": 0.0,
+     "rr": 0.0,
+     "ndcg": 0.0,
+     "hit": false
+    },
+    {
+     "query": "coś do klasycznego gabinetu",
+     "top": [
+      "vintage-bankers-lamp",
+      "brass-banker-floor-lamp",
+      "smoked-glass-desk-sphere",
+      "stained-glass-tiffany-lamp",
+      "archaeology-fossil-stone-lamp"
+     ],
+     "precision": 0.6,
+     "rr": 1.0,
+     "ndcg": 0.7227265726449519,
+     "hit": true
+    },
+    {
+     "query": "oświetlenie pod szafki w kuchni",
+     "top": [
+      "under-cabinet-led-strip",
+      "concrete-base-table-lamp",
+      "scandi-tripod-floor-lamp",
+      "vintage-amber-pendant",
+      "smart-wifi-floor-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 1.0,
+     "ndcg": 0.6131471927654584,
+     "hit": true
+    },
+    {
+     "query": "żeby było jasno w przedpokoju",
+     "top": [
+      "rechargeable-touch-lantern",
+      "touch-dimmer-bedside-bar",
+      "kids-cloud-night-lamp",
+      "minimalist-wall-sconce",
+      "smart-wifi-lamp"
+     ],
+     "precision": 0.2,
+     "rr": 0.25,
+     "ndcg": 0.14606834984270645,
+     "hit": true
+    },
+    {
+     "query": "coś do sterowania z telefonu",
+     "top": [
+      "smart-wifi-lamp",
+      "smart-wifi-floor-lamp",
+      "smart-flexible-led-neon-strip",
+      "smart-corner-floor-lightbar",
+      "smart-rgb-desk-ambient-ring"
+     ],
+     "precision": 1.0,
+     "rr": 1.0,
+     "ndcg": 1.0,
+     "hit": true
+    }
+   ]
+  }
+ },
+ "sensitivity": [
+  {
+   "weight": "phrase_equals_id",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "phrase_in_tags",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "phrase_in_id",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "phrase_in_name",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "phrase_in_other_text",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "typed_word_in_name",
+   "min": 0.9475308641975309,
+   "max": 0.95679012345679
+  },
+  {
+   "weight": "typed_word_in_tags",
+   "min": 0.9475308641975309,
+   "max": 0.9598765432098766
+  },
+  {
+   "weight": "typed_word_in_description",
+   "min": 0.9475308641975309,
+   "max": 0.9598765432098766
+  },
+  {
+   "weight": "any_word_in_identity",
+   "min": 0.9475308641975309,
+   "max": 0.95679012345679
+  },
+  {
+   "weight": "any_word_in_category",
+   "min": 0.9475308641975309,
+   "max": 0.9506172839506173
+  },
+  {
+   "weight": "any_word_in_keywords",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "any_word_in_description",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "color_capability_and_tag",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "color_capability_tag_only",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "color_physical",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "color_rgb_alternative",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "color_rgb_with_tag",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "profile_primary",
+   "min": 0.9475308641975309,
+   "max": 0.95679012345679
+  },
+  {
+   "weight": "profile_secondary",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "profile_per_marker",
+   "min": 0.9475308641975309,
+   "max": 0.95679012345679
+  },
+  {
+   "weight": "light_preference",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "context_fit",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "context_strong_fit",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "context_mismatch",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  },
+  {
+   "weight": "context_type_mismatch",
+   "min": 0.9475308641975309,
+   "max": 0.9475308641975309
+  }
+ ],
+ "avg_ms_per_query": 3.8397075268828
+}

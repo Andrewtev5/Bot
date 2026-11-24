@@ -1,0 +1,64 @@
+Products: 170, Morfeusz 2: yes
+
+== Query set: podstawowy (54 queries)
+Kolejność z katalogu        P@5=0.089  MRR=0.181  nDCG@5=0.096  Hit@5=0.333
+BM25 bez lematyzacji        P@5=0.648  MRR=0.843  nDCG@5=0.740  Hit@5=0.889
+BM25 z lematyzacją          P@5=0.659  MRR=0.889  nDCG@5=0.763  Hit@5=0.926
+Reguły bez lematyzacji      P@5=0.719  MRR=0.954  nDCG@5=0.822  Hit@5=0.963
+Reguły, wagi równe          P@5=0.722  MRR=0.946  nDCG@5=0.825  Hit@5=0.981
+Reguły, skala wag (pełny)   P@5=0.733  MRR=0.948  nDCG@5=0.835  Hit@5=0.981
+
+== Query set: fleksyjny (23 queries)
+Kolejność z katalogu        P@5=0.087  MRR=0.178  nDCG@5=0.099  Hit@5=0.304
+BM25 bez lematyzacji        P@5=0.252  MRR=0.399  nDCG@5=0.275  Hit@5=0.522
+BM25 z lematyzacją          P@5=0.530  MRR=0.791  nDCG@5=0.616  Hit@5=0.957
+Reguły bez lematyzacji      P@5=0.348  MRR=0.498  nDCG@5=0.392  Hit@5=0.609
+Reguły, wagi równe          P@5=0.539  MRR=0.772  nDCG@5=0.617  Hit@5=0.913
+Reguły, skala wag (pełny)   P@5=0.539  MRR=0.813  nDCG@5=0.632  Hit@5=0.870
+
+== Query set: nieprecyzyjny (16 queries)
+Kolejność z katalogu        P@5=0.062  MRR=0.122  nDCG@5=0.062  Hit@5=0.250
+BM25 bez lematyzacji        P@5=0.300  MRR=0.646  nDCG@5=0.367  Hit@5=0.750
+BM25 z lematyzacją          P@5=0.463  MRR=0.875  nDCG@5=0.550  Hit@5=0.938
+Reguły bez lematyzacji      P@5=0.275  MRR=0.658  nDCG@5=0.361  Hit@5=0.750
+Reguły, wagi równe          P@5=0.512  MRR=0.875  nDCG@5=0.602  Hit@5=0.938
+Reguły, skala wag (pełny)   P@5=0.500  MRR=0.797  nDCG@5=0.576  Hit@5=0.875
+
+Sensitivity of MRR (baseline 0.948), each weight x(0.5, 0.75, 1.25, 1.5):
+  phrase_equals_id            0.948 .. 0.948
+  phrase_in_tags              0.948 .. 0.948
+  phrase_in_id                0.948 .. 0.948
+  phrase_in_name              0.948 .. 0.948
+  phrase_in_other_text        0.948 .. 0.948
+  typed_word_in_name          0.948 .. 0.957
+  typed_word_in_tags          0.948 .. 0.960
+  typed_word_in_description   0.948 .. 0.960
+  any_word_in_identity        0.948 .. 0.957
+  any_word_in_category        0.948 .. 0.951
+  any_word_in_keywords        0.948 .. 0.948
+  any_word_in_description     0.948 .. 0.948
+  color_capability_and_tag    0.948 .. 0.948
+  color_capability_tag_only   0.948 .. 0.948
+  color_physical              0.948 .. 0.948
+  color_rgb_alternative       0.948 .. 0.948
+  color_rgb_with_tag          0.948 .. 0.948
+  profile_primary             0.948 .. 0.957
+  profile_secondary           0.948 .. 0.948
+  profile_per_marker          0.948 .. 0.957
+  light_preference            0.948 .. 0.948
+  context_fit                 0.948 .. 0.948
+  context_strong_fit          0.948 .. 0.948
+  context_mismatch            0.948 .. 0.948
+  context_type_mismatch       0.948 .. 0.948
+
+Average ranking time: 3.84 ms per query
+
+Queries with no relevant product in the top results (full ranking):
+  [podstawowy] lampa z piórami: ['wire-mesh-pendant-lamp', 'boho-woven-bamboo-floor-lamp', 'ceramic-wabi-sabi-pendant']
+  [fleksyjny] macie lampy biurkowe: ['smoked-glass-table-cylinder', 'woven-seagrass-table-lamp', 'boho-woven-bamboo-floor-lamp']
+  [fleksyjny] szukam drewnianej lampy: ['amber-glass-multi-pendant', 'brass-banker-floor-lamp', 'himalayan-salt-rock-lamp']
+  [fleksyjny] macie ceramiczne lampy: ['woven-seagrass-table-lamp', 'boho-woven-bamboo-floor-lamp', 'boho-woven-rattan-pendant']
+  [nieprecyzyjny] coś na balkon: []
+  [nieprecyzyjny] coś do pokoju gracza: ['kids-cloud-night-lamp', 'cloud-pendant-light-shade', 'starry-galaxy-projector-globe']
+
+Saved: docs\wyniki_eksperymentu.json
